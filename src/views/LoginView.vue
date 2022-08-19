@@ -54,7 +54,6 @@
         />
 
         <button class="btn btn-primary font-sora block">Login</button>
-        <pre>{{ loginData }}</pre>
       </form>
     </div>
   </div>
