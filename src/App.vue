@@ -49,6 +49,3 @@
     </nav>
   </div>
 </template>
-
-<style>
-</style>
