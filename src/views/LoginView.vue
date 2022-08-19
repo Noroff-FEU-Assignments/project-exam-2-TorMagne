@@ -10,7 +10,10 @@
       justify-center
     "
   >
-    <div>
+    <div v-if="loading">
+      <Loader />
+    </div>
+    <div v-else>
       <label for="email" class="label"
         ><span class="label-text-alt">Email</span></label
       >
@@ -53,9 +56,14 @@
 </template>
 
 <script>
+import Loader from "../components/Loader.vue";
 export default {
+  components: {
+    Loader,
+  },
   data() {
     return {
+      loading: false,
       loginData: {
         identifier: "",
         password: "",
