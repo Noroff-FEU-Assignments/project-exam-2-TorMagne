@@ -24,12 +24,14 @@
               </label>
             </div>
             <div class="flex-1 px-2 mx-2">
-              <router-link to="/" class="text-primary text-2xl font-bold"
+              <router-link
+                to="/"
+                class="text-primary text-2xl font-bold font-sora"
                 >SUNGA</router-link
               >
             </div>
             <div class="flex-none hidden lg:block">
-              <ul class="menu menu-horizontal">
+              <ul class="menu menu-horizontal font-raleway">
                 <!-- Navbar menu content here -->
                 <li><router-link to="/">Home</router-link></li>
                 <li><router-link to="/about">About</router-link></li>
@@ -41,7 +43,7 @@
         </div>
         <div class="drawer-side">
           <label for="my-drawer-3" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
+          <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 font-raleway">
             <!-- Sidebar content here -->
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/about">About</router-link></li>
