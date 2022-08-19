@@ -35,6 +35,13 @@
                 <!-- Navbar menu content here -->
                 <li><router-link to="/guide">Guide</router-link></li>
                 <li><router-link to="/about">About</router-link></li>
+                <div>
+                  <span>Hi {{ user.username }}</span>
+                  <button class="btn btn-primary" @click="logOut">
+                    Logout {{ user }}
+                  </button>
+                </div>
+                <!-- <div v-else></div> -->
               </ul>
             </div>
           </div>
@@ -53,3 +60,20 @@
     </nav>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      // userIsLoggedIn: this.$store.state.isLoggedIn,
+      user: this.$store.state.userData,
+    };
+  },
+  methods: {
+    logOut() {
+      localStorage.clear();
+      // this.$store.state.isLoggedIn = false;
+    },
+  },
+};
+</script>

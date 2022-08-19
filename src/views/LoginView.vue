@@ -66,6 +66,9 @@ import LoginSuccess from "../components/layout/LoginSuccess.vue";
 // utillity
 import axios from "axios";
 export default {
+  props: {
+    isLoggedIn: Boolean,
+  },
   components: {
     Loader,
     LoginSuccess,
@@ -89,11 +92,11 @@ export default {
           process.env.VUE_APP_API_URL + "auth/local",
           this.loginData
         );
-        const { jwt } = response.data;
+        const { jwt, user } = response.data;
         localStorage.setItem("jwt", jwt);
-        this.$store.state.userData = this.loginData;
+        this.$store.state.userData = user;
+        // this.$store.state.isLoggedIn = true;
         this.$store.commit("initialiseStore");
-        // console.log(this.$store.state.username);
         this.isLoading = false;
         this.$router.push("/guide");
       } catch (loginError) {
