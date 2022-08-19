@@ -33,7 +33,7 @@
             <div class="flex-none hidden lg:block">
               <ul class="menu menu-horizontal font-raleway">
                 <!-- Navbar menu content here -->
-                <li><router-link to="/">Home</router-link></li>
+                <li><router-link to="/guide">Guide</router-link></li>
                 <li><router-link to="/about">About</router-link></li>
               </ul>
             </div>
@@ -45,7 +45,7 @@
           <label for="my-drawer-3" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 font-raleway">
             <!-- Sidebar content here -->
-            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/guide">Guide</router-link></li>
             <li><router-link to="/about">About</router-link></li>
           </ul>
         </div>
