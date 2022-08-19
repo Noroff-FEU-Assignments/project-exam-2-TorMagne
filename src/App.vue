@@ -24,7 +24,9 @@
               </label>
             </div>
             <div class="flex-1 px-2 mx-2">
-              <router-link to="/">Navbar Title</router-link>
+              <router-link to="/" class="text-primary text-2xl font-bold"
+                >SUNGA</router-link
+              >
             </div>
             <div class="flex-none hidden lg:block">
               <ul class="menu menu-horizontal">
