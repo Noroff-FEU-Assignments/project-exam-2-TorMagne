@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
-    <nav>
+  <div id="app" class="bg-neutral">
+    <nav class="container mx-auto h-[64px] w-full">
       <div class="drawer">
         <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
           <!-- Navbar -->
-          <div class="w-full navbar bg-neutral">
+          <div class="navbar">
             <div class="flex-none lg:hidden">
               <label for="my-drawer-3" class="btn btn-square btn-ghost">
                 <svg
