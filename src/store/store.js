@@ -8,6 +8,9 @@ export const store = new Vuex.Store({
     userData: {},
     isLoggedIn: false,
   },
+  getters: {
+    getIsLog: (state) => state.isLoggedIn,
+  },
   mutations: {
     initialiseStore(state) {
       // Check if the ID exists
@@ -15,6 +18,9 @@ export const store = new Vuex.Store({
         // Replace the state object with the stored item
         this.replaceState(Object.assign(state, JSON.parse(localStorage.getItem('userInfo'))));
       }
+    },
+    setIsLoggedIn: ({ state }, isLoggedIn) => {
+      state.isLoggedIn = isLoggedIn;
     },
   },
 });

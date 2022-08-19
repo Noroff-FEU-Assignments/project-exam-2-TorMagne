@@ -27,7 +27,7 @@
               <router-link
                 to="/"
                 class="text-primary text-2xl font-bold font-sora"
-                >SUNGA</router-link
+                >SUNGA {{ isLoggedIn }}</router-link
               >
             </div>
             <div class="flex-none hidden lg:block">
@@ -35,13 +35,14 @@
                 <!-- Navbar menu content here -->
                 <li><router-link to="/guide">Guide</router-link></li>
                 <li><router-link to="/about">About</router-link></li>
-                <div>
+
+                <div v-if="isLoggedIn">
                   <span>Hi {{ user.username }}</span>
                   <button class="btn btn-primary" @click="logOut">
-                    Logout {{ user }}
+                    Logout
                   </button>
                 </div>
-                <!-- <div v-else></div> -->
+                <div v-else></div>
               </ul>
             </div>
           </div>
@@ -64,15 +65,21 @@
 <script>
 export default {
   data() {
+    // console.log(this.$store.state.isLoggedIn);
     return {
-      // userIsLoggedIn: this.$store.state.isLoggedIn,
       user: this.$store.state.userData,
     };
   },
   methods: {
     logOut() {
       localStorage.clear();
-      // this.$store.state.isLoggedIn = false;
+      // this.$store.commit("initialiseStore");
+      this.$store.state.isLoggedIn = false;
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.getIsLog;
     },
   },
 };

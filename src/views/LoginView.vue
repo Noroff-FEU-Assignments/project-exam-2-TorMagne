@@ -54,6 +54,7 @@
         />
 
         <button class="btn btn-primary font-sora block">Login</button>
+        <pre>{{ this.$store.state.isLoggedIn }}</pre>
       </form>
     </div>
   </div>
@@ -95,11 +96,12 @@ export default {
         const { jwt, user } = response.data;
         localStorage.setItem("jwt", jwt);
         this.$store.state.userData = user;
-        // this.$store.state.isLoggedIn = true;
+        this.$store.state.isLoggedIn = true;
         this.$store.commit("initialiseStore");
         this.isLoading = false;
         this.$router.push("/guide");
       } catch (loginError) {
+        console.log(loginError);
         this.isLoading = false;
         this.loginError = true;
       }
