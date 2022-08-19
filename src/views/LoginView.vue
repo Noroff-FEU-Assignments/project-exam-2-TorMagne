@@ -10,6 +10,9 @@
       justify-center
     "
   >
+    <div v-if="loginError">
+      <LoginSuccess />
+    </div>
     <div v-if="isLoading">
       <Loader />
     </div>
@@ -59,16 +62,19 @@
 
 <script>
 // components
-import Loader from "../components/Loader.vue";
+import Loader from "../components/layout/Loader.vue";
+import LoginSuccess from "../components/layout/LoginSuccess.vue";
 // utillity
 import axios from "axios";
 export default {
   components: {
     Loader,
+    LoginSuccess,
   },
   data() {
     return {
       isLoading: false,
+      loginError: false,
       loginData: {
         identifier: "",
         password: "",
@@ -91,8 +97,9 @@ export default {
         // console.log(this.$store.state.username);
         this.isLoading = false;
         this.$router.push("/guide");
-      } catch (error) {
-        this.error = error;
+      } catch (loginError) {
+        this.isLoading = false;
+        this.loginError = true;
       }
     },
   },
