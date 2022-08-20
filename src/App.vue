@@ -37,7 +37,7 @@
                 <li><router-link to="/about">About</router-link></li>
 
                 <div v-if="isLoggedIn">
-                  <span class="mr-3">Hi {{ user.username }}</span>
+                  <span class="px-4 py-3">Hi {{ user.username }}</span>
                   <button class="btn btn-primary" @click="logOut">
                     Logout
                   </button>
