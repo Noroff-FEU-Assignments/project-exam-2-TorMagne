@@ -1,42 +1,52 @@
 <template>
-  <form action="" @submit="login">
-    <label for="email" class="label"
-      ><span class="label-text-alt">Email</span></label
-    >
-    <input
-      id="email"
-      type="email"
-      placeholder="Email"
-      class="
-        input input-bordered
-        w-full
-        max-w-xs
-        border-primary
-        mb-4
-        font-raleway
-      "
-      v-model="loginData.identifier"
-    />
-    <label for="password" class="label"
-      ><span class="label-text-alt">Password</span></label
-    >
-    <input
-      id="password"
-      type="password"
-      placeholder="Password"
-      class="
-        input input-bordered
-        w-full
-        max-w-xs
-        border-primary
-        mb-4
-        font-raleway
-      "
-      v-model="loginData.password"
-    />
+  <ValidationObserver v-slot="{ handleSubmit }">
+    <form action="" @submit.prevent="handleSubmit(onSubmit)">
+      <label for="email" class="label"
+        ><span class="label-text-alt">Email</span></label
+      >
+      <ValidationProvider rules="required|email" v-slot="{ errors }">
+        <input
+          id="email"
+          type="email"
+          placeholder="Email"
+          class="
+            input input-bordered
+            w-full
+            max-w-xs
+            border-primary
+            mb-4
+            font-raleway
+          "
+          v-model="loginData.identifier"
+        />
+        <span class="text-red-500">{{ errors[0] }}</span>
+      </ValidationProvider>
+      <label for="password" class="label"
+        ><span class="label-text-alt">Password</span></label
+      >
+      <ValidationProvider rules="required|length:10" v-slot="{ errors }">
+        <input
+          id="password"
+          type="password"
+          placeholder="Password"
+          class="
+            input input-bordered
+            w-full
+            max-w-xs
+            border-primary
+            mb-4
+            font-raleway
+          "
+          v-model="loginData.password"
+        />
+        <span class="text-red-500">{{ errors[0] }}</span>
+      </ValidationProvider>
 
-    <button class="btn btn-primary font-sora block">Login</button>
-  </form>
+      <button type="submit" class="btn btn-primary font-sora block">
+        Login
+      </button>
+    </form>
+  </ValidationObserver>
 </template>
 
 <script>
@@ -52,8 +62,7 @@ export default {
     };
   },
   methods: {
-    async login(e) {
-      e.preventDefault();
+    async onSubmit() {
       try {
         this.isLoading = true;
         const response = await axios.post(
@@ -76,3 +85,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+span {
+  display: block;
+}
+</style>

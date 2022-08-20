@@ -25,7 +25,7 @@
 <script>
 // components
 import Loader from "../components/layout/Loader.vue";
-import LoginError from "../components/layout/LoginError.vue";
+import LoginError from "../components/utillity/LoginError.vue";
 import LoginForm from "../components/forms/LoginForm.vue";
 
 export default {
