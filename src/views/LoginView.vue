@@ -11,7 +11,7 @@
     "
   >
     <div v-if="loginError">
-      <LoginSuccess />
+      <LoginError />
     </div>
     <div v-if="isLoading">
       <Loader />
@@ -25,13 +25,13 @@
 <script>
 // components
 import Loader from "../components/layout/Loader.vue";
-import LoginSuccess from "../components/layout/LoginSuccess.vue";
+import LoginError from "../components/layout/LoginError.vue";
 import LoginForm from "../components/forms/LoginForm.vue";
 
 export default {
   components: {
     Loader,
-    LoginSuccess,
+    LoginError,
     LoginForm,
   },
   data() {
