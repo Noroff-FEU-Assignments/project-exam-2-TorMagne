@@ -66,9 +66,6 @@ import LoginSuccess from "../components/layout/LoginSuccess.vue";
 // utillity
 import axios from "axios";
 export default {
-  props: {
-    isLoggedIn: Boolean,
-  },
   components: {
     Loader,
     LoginSuccess,
