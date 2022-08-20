@@ -10,7 +10,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  Vuelidate,
   // beforeCreate() {
   //   this.$store.commit('initialiseStore');
   // },
