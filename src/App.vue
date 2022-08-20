@@ -64,7 +64,6 @@
 <script>
 export default {
   data() {
-    // console.log(this.$store.state.isLoggedIn);
     return {
       user: this.$store.state.userData,
     };
