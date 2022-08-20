@@ -27,7 +27,7 @@
               <router-link
                 to="/"
                 class="text-primary text-2xl font-bold font-sora"
-                >SUNGA {{ isLoggedIn }}</router-link
+                >SUNGA</router-link
               >
             </div>
             <div class="flex-none hidden lg:block">
@@ -37,12 +37,11 @@
                 <li><router-link to="/about">About</router-link></li>
 
                 <div v-if="isLoggedIn">
-                  <span>Hi {{ user.username }}</span>
+                  <span class="mr-3">Hi {{ user.username }}</span>
                   <button class="btn btn-primary" @click="logOut">
                     Logout
                   </button>
                 </div>
-                <div v-else></div>
               </ul>
             </div>
           </div>
@@ -73,8 +72,8 @@ export default {
   methods: {
     logOut() {
       localStorage.clear();
-      // this.$store.commit("initialiseStore");
       this.$store.state.isLoggedIn = false;
+      this.$router.push("/");
     },
   },
   computed: {

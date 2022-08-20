@@ -54,7 +54,6 @@
         />
 
         <button class="btn btn-primary font-sora block">Login</button>
-        <pre>{{ this.$store.state.isLoggedIn }}</pre>
       </form>
     </div>
   </div>
