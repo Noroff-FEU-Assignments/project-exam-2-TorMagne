@@ -1,20 +1,30 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import AdminView from '../views/AdminView.vue';
 import GuideView from '../views/GuideView.vue';
 import LoginView from '../views/LoginView.vue';
 // store
-import { store } from '@/store/store';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
-const routerGuard = (to, from, next) => {
-  let auth = store.state.isLoggedIn;
+// const routerGuard = (to, from, next) => {
+//   let auth = store.state.isLoggedIn;
 
-  if (auth) {
-    next();
-  } else {
-    next('/');
+//   if (auth) {
+//     next();
+//   } else {
+//     next('/');
+//   }
+// };
+
+let routerGuard = (to, from, next) => {
+  if (!store.getters['auth/authenticaded']) {
+    return next({
+      name: 'login',
+    });
   }
+  next();
 };
 
 const routes = [
@@ -27,6 +37,12 @@ const routes = [
     path: '/guide',
     name: 'guide',
     component: GuideView,
+    beforeEnter: routerGuard,
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView,
     beforeEnter: routerGuard,
   },
 ];

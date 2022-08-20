@@ -54,10 +54,7 @@
 </template>
 
 <script>
-// utillity
-import axios from "axios";
-// store
-import { store } from "@/store/store";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -68,43 +65,57 @@ export default {
     };
   },
   methods: {
-    async onSubmit() {
-      try {
-        this.isLoading = true;
-        const response = await axios.post(
-          process.env.VUE_APP_API_URL + "auth/local",
-          this.loginData
-        );
-        const { jwt, user } = response.data;
-        localStorage.setItem("jwt", jwt);
-        this.isLoading = false;
-        store.state.userData = user;
-        this.checkUser();
-      } catch (loginError) {
-        console.log(loginError);
-        this.isLoading = false;
-        this.loginError = true;
-      }
+    ...mapActions({
+      sigIn: "auth/signIn",
+    }),
+    onSubmit() {
+      // this.isLoading = true;
+      this.sigIn(this.loginData)
+        .then(() => {
+          this.$router.push("/guide");
+        })
+        .catch((error) => {
+          console.log(error);
+          // this.isLoading = false;
+          // this.loginError = true;
+        });
     },
-    async checkUser() {
-      let userId = store.state.userData.id;
-      try {
-        const response = await axios.get(
-          process.env.VUE_APP_API_URL + "users/" + userId + "/?[populate]=*",
-          {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("jwt"),
-            },
-          }
-        );
-        store.state.userData = response.data;
-        store.state.isLoggedIn = true;
-        store.commit("initialiseStore");
-        this.$router.push("/guide");
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    // async onSubmit() {
+    //   try {
+    //     this.isLoading = true;
+    //     const response = await axios.post(
+    //       process.env.VUE_APP_API_URL + "auth/local",
+    //       this.loginData
+    //     );
+    //     const { jwt } = response.data;
+    //     localStorage.setItem("jwt", jwt);
+    //     this.isLoading = false;
+    //   } catch (loginError) {
+    //     console.log(loginError);
+    //     this.isLoading = false;
+    //     this.loginError = true;
+    //   }
+    //   this.checkUser();
+    // },
+    // async checkUser() {
+    //   try {
+    //     const response = await axios.get(
+    //       process.env.VUE_APP_API_URL + "users/me",
+    //       {
+    //         headers: {
+    //           Authorization: "Bearer " + localStorage.getItem("jwt"),
+    //         },
+    //       }
+    //     );
+    //     store.state.isLoggedIn = true;
+    //     store.state.userData = response.data;
+    //     store.commit("initialiseStore");
+    //     this.$router.push("/guide");
+    //     console.log(response.data);
+    //   } catch (error) {
+    //     console.log("second call", error);
+    //   }
+    // },
   },
 };
 </script>

@@ -33,18 +33,19 @@
             <div class="flex-none hidden lg:block">
               <ul class="menu menu-horizontal font-raleway">
                 <!-- Navbar menu content here -->
-                <template v-if="isLoggedIn">
+                <template v-if="authenticaded">
                   <li><router-link to="/guide">Guide</router-link></li>
                   <li>
-                    <router-link to="/about">About</router-link>
-                  </li></template
-                >
+                    <template>
+                      <router-link to="/admin">Admin panel</router-link>
+                    </template>
+                  </li>
 
-                <div v-if="isLoggedIn">
-                  <button class="btn btn-primary" @click="logOut">
+                  <span class="py-3 px-4">Hei {{ user.username }}</span>
+                  <button class="btn btn-primary" @click="signOut">
                     Logout
                   </button>
-                </div>
+                </template>
               </ul>
             </div>
           </div>
@@ -55,12 +56,14 @@
           <label for="my-drawer-3" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 font-raleway">
             <!-- Sidebar content here -->
-            <template v-if="isLoggedIn">
+            <template v-if="authenticaded">
               <li><router-link to="/guide">Guide</router-link></li>
               <li>
-                <router-link to="/about">About</router-link>
-              </li></template
-            >
+                <template>
+                  <router-link to="/admin">Admin panel</router-link>
+                </template>
+              </li>
+            </template>
           </ul>
         </div>
       </div>
@@ -69,25 +72,26 @@
 </template>
 
 <script>
-// store
-import { store } from "@/store/store";
+import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
-    return {
-      user: store.state.userData,
-    };
+    return {};
   },
   methods: {
-    logOut() {
-      store.state.isLoggedIn = false;
-      localStorage.clear();
-      this.$router.push("/");
+    ...mapActions({
+      signOutAction: "auth/signOut",
+    }),
+    signOut() {
+      this.signOutAction().then(() => {
+        this.$router.push("/");
+      });
     },
   },
   computed: {
-    isLoggedIn() {
-      return store.getters.getIsLog;
-    },
+    ...mapGetters({
+      authenticaded: "auth/authenticaded",
+      user: "auth/user",
+    }),
   },
 };
 </script>
