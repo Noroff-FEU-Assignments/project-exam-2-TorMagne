@@ -1,5 +1,5 @@
 <template>
-  <ValidationObserver v-slot="{ handleSubmit }">
+  <ValidationObserver v-slot="{ handleSubmit, invalid }">
     <form action="" @submit.prevent="handleSubmit(onSubmit)">
       <label for="email" class="label"
         ><span class="label-text-alt">Email</span></label
@@ -42,7 +42,11 @@
         <span class="text-red-500">{{ errors[0] }}</span>
       </ValidationProvider>
 
-      <button type="submit" class="btn btn-primary font-sora block">
+      <button
+        type="submit"
+        :disabled="invalid"
+        class="btn btn-primary font-sora block"
+      >
         Login
       </button>
     </form>
