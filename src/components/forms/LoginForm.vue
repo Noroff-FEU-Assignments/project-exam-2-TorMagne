@@ -77,15 +77,32 @@ export default {
         );
         const { jwt, user } = response.data;
         localStorage.setItem("jwt", jwt);
-        store.state.userData = user;
-        store.state.isLoggedIn = true;
-        store.commit("initialiseStore");
         this.isLoading = false;
-        this.$router.push("/guide");
+        store.state.userData = user;
+        this.checkUser();
       } catch (loginError) {
         console.log(loginError);
         this.isLoading = false;
         this.loginError = true;
+      }
+    },
+    async checkUser() {
+      let userId = store.state.userData.id;
+      try {
+        const response = await axios.get(
+          process.env.VUE_APP_API_URL + "users/" + userId + "/?[populate]=*",
+          {
+            headers: {
+              Authorization: "Bearer " + localStorage.getItem("jwt"),
+            },
+          }
+        );
+        store.state.userData = response.data;
+        store.state.isLoggedIn = true;
+        store.commit("initialiseStore");
+        this.$router.push("/guide");
+      } catch (error) {
+        console.log(error);
       }
     },
   },

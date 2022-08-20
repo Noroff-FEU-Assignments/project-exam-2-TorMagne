@@ -33,8 +33,12 @@
             <div class="flex-none hidden lg:block">
               <ul class="menu menu-horizontal font-raleway">
                 <!-- Navbar menu content here -->
-                <li><router-link to="/guide">Guide</router-link></li>
-                <li><router-link to="/about">About</router-link></li>
+                <template v-if="isLoggedIn">
+                  <li><router-link to="/guide">Guide</router-link></li>
+                  <li>
+                    <router-link to="/about">About</router-link>
+                  </li></template
+                >
 
                 <div v-if="isLoggedIn">
                   <button class="btn btn-primary" @click="logOut">
@@ -51,8 +55,12 @@
           <label for="my-drawer-3" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 font-raleway">
             <!-- Sidebar content here -->
-            <li><router-link to="/guide">Guide</router-link></li>
-            <li><router-link to="/about">About</router-link></li>
+            <template v-if="isLoggedIn">
+              <li><router-link to="/guide">Guide</router-link></li>
+              <li>
+                <router-link to="/about">About</router-link>
+              </li></template
+            >
           </ul>
         </div>
       </div>
@@ -71,8 +79,8 @@ export default {
   },
   methods: {
     logOut() {
-      localStorage.clear();
       store.state.isLoggedIn = false;
+      localStorage.clear();
       this.$router.push("/");
     },
   },
