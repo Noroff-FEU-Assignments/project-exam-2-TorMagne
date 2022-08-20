@@ -10,23 +10,23 @@
       justify-center
     "
   >
-    <div v-if="loginError">
+    <template v-if="loginError">
       <LoginError />
-    </div>
-    <div v-if="isLoading">
+    </template>
+    <template v-if="isLoading">
       <Loader />
-    </div>
-    <div v-else>
+    </template>
+    <template v-else>
       <LoginForm />
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 // components
-import Loader from "../components/layout/Loader.vue";
-import LoginError from "../components/utillity/LoginError.vue";
-import LoginForm from "../components/forms/LoginForm.vue";
+import Loader from "@/components/layout/Loader.vue";
+import LoginError from "@/components/utillity/LoginError.vue";
+import LoginForm from "@/components/forms/LoginForm.vue";
 
 export default {
   components: {

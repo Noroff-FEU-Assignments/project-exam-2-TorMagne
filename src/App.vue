@@ -61,22 +61,24 @@
 </template>
 
 <script>
+// store
+import { store } from "@/store/store";
 export default {
   data() {
     return {
-      user: this.$store.state.userData,
+      user: store.state.userData,
     };
   },
   methods: {
     logOut() {
       localStorage.clear();
-      this.$store.state.isLoggedIn = false;
+      store.state.isLoggedIn = false;
       this.$router.push("/");
     },
   },
   computed: {
     isLoggedIn() {
-      return this.$store.getters.getIsLog;
+      return store.getters.getIsLog;
     },
   },
 };

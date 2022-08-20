@@ -56,6 +56,8 @@
 <script>
 // utillity
 import axios from "axios";
+// store
+import { store } from "@/store/store";
 export default {
   data() {
     return {
@@ -75,9 +77,9 @@ export default {
         );
         const { jwt, user } = response.data;
         localStorage.setItem("jwt", jwt);
-        this.$store.state.userData = user;
-        this.$store.state.isLoggedIn = true;
-        this.$store.commit("initialiseStore");
+        store.state.userData = user;
+        store.state.isLoggedIn = true;
+        store.commit("initialiseStore");
         this.isLoading = false;
         this.$router.push("/guide");
       } catch (loginError) {
