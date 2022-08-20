@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import { store } from './store/store';
 import './assets/tailwind.css';
-import Vuelidate from 'vuelidate';
 
 Vue.config.productionTip = false;
 
