@@ -88,13 +88,11 @@ export default {
       sigIn: "auth/signIn",
     }),
     onSubmit() {
-      console.log("hallo før login");
       this.isLoading = true;
       this.sigIn(this.loginData)
         .then(() => {
           this.$router.push("/guide");
           this.isLoading = false;
-          console.log("hallo etter loging");
         })
         .catch((error) => {
           console.log(error);

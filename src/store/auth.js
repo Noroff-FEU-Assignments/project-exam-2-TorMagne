@@ -22,11 +22,13 @@ export default {
     },
   },
   actions: {
+    // sign in
     async signIn({ dispatch }, credentials) {
       let response = await axios.post('auth/local', credentials);
       return dispatch('attempt', response.data.jwt);
     },
 
+    // check user
     async attempt({ commit, state }, token) {
       if (token) {
         commit('SET_TOKEN', token);
