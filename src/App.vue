@@ -35,12 +35,9 @@
                 <!-- Navbar menu content here -->
                 <template v-if="authenticaded">
                   <li><router-link to="/guide">Guide</router-link></li>
-                  <li>
-                    <template>
-                      <router-link to="/admin">Admin panel</router-link>
-                    </template>
+                  <li v-if="authenticaded.isAdmin">
+                    <router-link to="/admin">Admin panel</router-link>
                   </li>
-
                   <span class="py-3 px-4">Hei {{ user.username }}</span>
                   <button class="btn btn-primary" @click="signOut">
                     Logout
@@ -58,11 +55,11 @@
             <!-- Sidebar content here -->
             <template v-if="authenticaded">
               <li><router-link to="/guide">Guide</router-link></li>
-              <li>
-                <template>
-                  <router-link to="/admin">Admin panel</router-link>
-                </template>
+              <li v-if="authenticaded.isAdmin">
+                <router-link to="/admin">Admin panel</router-link>
               </li>
+              <span class="py-3 px-4">Hei {{ user.username }}</span>
+              <button class="btn btn-primary" @click="signOut">Logout</button>
             </template>
           </ul>
         </div>
