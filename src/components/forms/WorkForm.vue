@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-4 mt-12 flex justify-center">
     <form action="" class="w-full max-w-md">
-      <h1 class="font-sora font-bold text-3xl mb-5">Save work day</h1>
+      <Heading class="mb-5" title="Save work day" />
       <!-- date -->
       <div class="form-control w-full max-w-md">
         <label class="label">
@@ -76,7 +76,12 @@
 </template>
 
 <script>
+// components
+import Heading from "@/components/layout/Heading.vue";
 export default {
+  components: {
+    Heading,
+  },
   data() {
     return {
       newWorkInfo: {

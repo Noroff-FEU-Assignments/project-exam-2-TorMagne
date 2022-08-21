@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 mt-12">
-    <Heading class="font-sora font-bold text-3xl" title="What is SUNGA?" />
+    <Heading title="What is SUNGA?" />
     <p class="mb-4 font-raleway underline decoration-primary">
       It's an app for saving work hours and work details 😊
     </p>
