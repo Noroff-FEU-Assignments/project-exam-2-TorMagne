@@ -8,16 +8,6 @@ import store from '@/store';
 
 Vue.use(VueRouter);
 
-// const routerGuard = (to, from, next) => {
-//   let auth = store.state.isLoggedIn;
-
-//   if (auth) {
-//     next();
-//   } else {
-//     next('/');
-//   }
-// };
-
 let routerGuard = (to, from, next) => {
   if (!store.getters['auth/authenticaded']) {
     return next({
