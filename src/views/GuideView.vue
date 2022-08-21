@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 mt-12">
-    <h1 class="font-sora font-bold text-3xl">What is SUNGA?</h1>
+    <Heading class="font-sora font-bold text-3xl" title="What is SUNGA?" />
     <p class="mb-4 font-raleway underline decoration-primary">
       It's an app for saving work hours and work details 😊
     </p>
@@ -19,3 +19,12 @@
     </p>
   </div>
 </template>
+
+<script>
+import Heading from "@/components/layout/Heading.vue";
+export default {
+  components: {
+    Heading,
+  },
+};
+</script>

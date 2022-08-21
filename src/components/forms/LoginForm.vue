@@ -9,7 +9,7 @@
     <template v-else>
       <ValidationObserver v-slot="{ handleSubmit, invalid }">
         <form action="" @submit.prevent="handleSubmit(onSubmit)">
-          <label for="email" class="label"
+          <label for="email" class="label font-raleway"
             ><span class="label-text-alt">Email</span></label
           >
           <ValidationProvider rules="required|email" v-slot="{ errors }">
@@ -30,7 +30,7 @@
             <span class="text-red-500">{{ errors[0] }}</span>
           </ValidationProvider>
           <label for="password" class="label"
-            ><span class="label-text-alt">Password</span></label
+            ><span class="label-text-alt font-raleway">Password</span></label
           >
           <ValidationProvider rules="required|length:10" v-slot="{ errors }">
             <input

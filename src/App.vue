@@ -26,7 +26,7 @@
             <div class="flex-1 px-2 mx-2">
               <router-link
                 to="/"
-                class="text-primary text-2xl font-bold font-sora"
+                class="text-primary text-3xl font-bold font-sora"
                 >SUNGA</router-link
               >
             </div>
@@ -35,6 +35,7 @@
                 <!-- Navbar menu content here -->
                 <template v-if="authenticaded">
                   <li><router-link to="/guide">Guide</router-link></li>
+                  <li><router-link to="/work">Work</router-link></li>
                   <li v-if="authenticaded.isAdmin">
                     <router-link to="/admin">Admin panel</router-link>
                   </li>
@@ -55,6 +56,7 @@
             <!-- Sidebar content here -->
             <template v-if="authenticaded">
               <li><router-link to="/guide">Guide</router-link></li>
+              <li><router-link to="/work">Work</router-link></li>
               <li v-if="authenticaded.isAdmin">
                 <router-link to="/admin">Admin panel</router-link>
               </li>

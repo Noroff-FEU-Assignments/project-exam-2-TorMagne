@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import AdminView from '../views/AdminView.vue';
 import GuideView from '../views/GuideView.vue';
+import WorkView from '../views/WorkView.vue';
 import LoginView from '../views/LoginView.vue';
 // store
 import store from '@/store';
@@ -27,6 +28,12 @@ const routes = [
     path: '/guide',
     name: 'guide',
     component: GuideView,
+    beforeEnter: routerGuard,
+  },
+  {
+    path: '/work',
+    name: 'work',
+    component: WorkView,
     beforeEnter: routerGuard,
   },
   {
