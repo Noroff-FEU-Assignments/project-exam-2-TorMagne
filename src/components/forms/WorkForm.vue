@@ -2,7 +2,11 @@
   <div class="container mx-auto px-4 mt-12 flex flex-col items-center">
     <form action="" class="w-full max-w-md" @submit.prevent="createWorkTable">
       <Heading class="mb-5" title="Save work day" />
-      <Alert v-if="success" message="You successfully saved your work" />
+      <Alert
+        v-if="success"
+        message="You successfully saved your work"
+        :alertClass="'alert-success'"
+      />
       <!-- date -->
       <div class="form-control w-full max-w-md">
         <label class="label">
@@ -138,7 +142,6 @@ export default {
 
       axios(config)
         .then((response) => {
-          // this.getUserWorkTable();
           this.$refs.triggerGetUserWorkTable.getUserWorkTable();
           this.resetForm();
           this.successFunc();
