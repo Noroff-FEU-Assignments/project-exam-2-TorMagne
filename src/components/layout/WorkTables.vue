@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-4 mt-12 flex justify-center">
     <div v-if="workAdded">
-      <Alert message="No work added yet" :alertClass="'alert-success'" />
+      <Alert message="No work added yet" :alertClass="'alert-info'" />
     </div>
     <div class="overflow-x-auto" v-else>
       <table class="table font-raleway">
