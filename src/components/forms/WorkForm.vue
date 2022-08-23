@@ -25,9 +25,7 @@
       <!-- start time -->
       <div class="form-control w-full max-w-md">
         <label class="label">
-          <span class="label-text font-raleway"
-            >Write start time {{ user.id }}</span
-          >
+          <span class="label-text font-raleway">Write start time</span>
         </label>
         <input
           type="time"
