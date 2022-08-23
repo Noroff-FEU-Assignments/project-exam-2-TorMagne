@@ -2,7 +2,7 @@
   <div class="container mx-auto px-4 mt-12 flex flex-col items-center">
     <form action="" class="w-full max-w-md" @submit.prevent="createWorkTable">
       <Heading class="mb-5" title="Save work day" />
-      <Success v-if="success" message="You successfully saved your work" />
+      <Alert v-if="success" message="You successfully saved your work" />
       <!-- date -->
       <div class="form-control w-full max-w-md">
         <label class="label">
@@ -79,7 +79,7 @@
 <script>
 // components
 import Heading from "@/components/layout/Heading.vue";
-import Success from "@/components/layout/Success.vue";
+import Alert from "@/components/layout/Alert.vue";
 import WorkTables from "@/components/layout/WorkTables.vue";
 // utility
 import axios from "axios";
@@ -87,7 +87,7 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     Heading,
-    Success,
+    Alert,
     WorkTables,
   },
   data() {

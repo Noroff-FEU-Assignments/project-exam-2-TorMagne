@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="loginError">
-      <LoginError />
+      <Alert message="There was an login error" :alertClass="'alert-error'" />
     </template>
     <template v-if="isLoading">
       <Loader />
@@ -67,11 +67,11 @@
 import { mapActions } from "vuex";
 // components
 import Loader from "@/components/layout/Loader.vue";
-import LoginError from "@/components/utillity/LoginError.vue";
+import Alert from "@/components/layout/Alert.vue";
 export default {
   components: {
     Loader,
-    LoginError,
+    Alert,
   },
   data() {
     return {

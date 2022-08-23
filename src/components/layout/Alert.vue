@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-success shadow-lg">
+  <div class="alert shadow-lg" :class="alertClass">
     <div>
       <span class="font-raleway">{{ message }}</span>
     </div>
@@ -9,7 +9,13 @@
 <script>
 export default {
   props: {
-    message: String,
+    message: {
+      type: String,
+      require: true,
+    },
+    alertClass: {
+      type: String,
+    },
   },
 };
 </script>
