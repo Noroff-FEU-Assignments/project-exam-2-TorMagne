@@ -29,7 +29,7 @@
       <!-- start time -->
       <div class="form-control w-full max-w-md">
         <label class="label">
-          <span class="label-text font-raleway">Write start time</span>
+          <span class="label-text font-raleway">Work start time</span>
         </label>
         <input
           type="time"
@@ -48,7 +48,7 @@
       <!-- end time -->
       <div class="form-control w-full max-w-md">
         <label class="label">
-          <span class="label-text font-raleway">Write end time</span>
+          <span class="label-text font-raleway">Work end time</span>
         </label>
         <input
           type="time"
