@@ -37,7 +37,9 @@
                   v-if="authenticaded"
                 >
                   <!-- Navbar menu content here -->
-                  <li><router-link to="/guide">Guide</router-link></li>
+                  <li>
+                    <router-link to="/guide">Guide</router-link>
+                  </li>
                   <li><router-link to="/work">Work</router-link></li>
                   <li v-if="authenticaded.isAdmin">
                     <router-link to="/admin">Admin panel</router-link>

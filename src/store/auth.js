@@ -4,6 +4,7 @@ export default {
   state: {
     token: null,
     user: null,
+    admin: null,
   },
   getters: {
     authenticaded(state) {
@@ -12,6 +13,9 @@ export default {
     user(state) {
       return state.user;
     },
+    admin(state) {
+      return state.admin;
+    },
   },
   mutations: {
     SET_TOKEN(state, token) {
@@ -19,6 +23,9 @@ export default {
     },
     SET_USER(state, data) {
       state.user = data;
+    },
+    SET_ADMIN(state, data) {
+      state.admin = data;
     },
   },
   actions: {
@@ -40,14 +47,17 @@ export default {
       try {
         let response = await axios.get('users/me');
         commit('SET_USER', response.data);
+        commit('SET_ADMIN', response.data.isAdmin);
       } catch (error) {
         commit('SET_TOKEN', null);
         commit('SET_USER', null);
+        commit('SET_ADMIN', null);
       }
     },
     signOut({ commit }) {
       commit('SET_TOKEN', null);
       commit('SET_USER', null);
+      commit('SET_ADMIN', null);
     },
   },
 };

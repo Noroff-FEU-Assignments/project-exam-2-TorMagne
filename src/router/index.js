@@ -14,9 +14,20 @@ let routerGuard = (to, from, next) => {
     return next({
       name: 'login',
     });
+  } else {
+    if (to.name == 'admin') {
+      if (store.getters['auth/admin']) {
+        next();
+      } else {
+        next('guide');
+      }
+    } else {
+      next();
+    }
   }
-  next();
 };
+
+console.log(store.getters);
 
 const routes = [
   {
