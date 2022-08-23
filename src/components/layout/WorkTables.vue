@@ -11,7 +11,7 @@
             <th>Date</th>
             <th>Start time</th>
             <th>End Time</th>
-            <th>Details {{ tables }}</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody class="" v-for="table in tables" :key="table.id">
