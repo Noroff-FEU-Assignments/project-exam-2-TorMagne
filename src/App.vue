@@ -5,8 +5,8 @@
         <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
           <!-- Navbar -->
-          <div class="navbar h-[64px] w-full bg-white"">
-            <div class="container mx-auto ">
+          <div class="navbar h-[64px] w-full bg-white">
+            <div class="container mx-auto">
               <div class="flex-none lg:hidden">
                 <label for="my-drawer-3" class="btn btn-square btn-ghost">
                   <svg
