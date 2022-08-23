@@ -124,9 +124,6 @@ export default {
       this.newWorkInfo.data.workEndTime = "";
       this.newWorkInfo.data.workDetails = "";
     },
-    // resetSearchDate() {
-    //   this.searchDate = "";
-    // },
     async createWorkTable() {
       this.newWorkInfo.data.user = this.user.id;
 
