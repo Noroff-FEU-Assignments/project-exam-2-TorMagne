@@ -1,11 +1,11 @@
 <template>
-  <div id="app" class="bg-neutral">
-    <nav class="container mx-auto h-[64px] w-full">
+  <div id="app">
+    <nav>
       <div class="drawer">
         <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col">
           <!-- Navbar -->
-          <div class="navbar">
+          <div class="navbar h-[64px] bg-white">
             <div class="flex-none lg:hidden">
               <label for="my-drawer-3" class="btn btn-square btn-ghost">
                 <svg
@@ -31,19 +31,18 @@
               >
             </div>
             <div class="flex-none hidden lg:block">
-              <ul class="menu menu-horizontal font-raleway">
+              <ul
+                class="menu menu-horizontal font-raleway"
+                v-if="authenticaded"
+              >
                 <!-- Navbar menu content here -->
-                <template v-if="authenticaded">
-                  <li><router-link to="/guide">Guide</router-link></li>
-                  <li><router-link to="/work">Work</router-link></li>
-                  <li v-if="authenticaded.isAdmin">
-                    <router-link to="/admin">Admin panel</router-link>
-                  </li>
-                  <span class="py-3 px-4">Hei {{ user.username }}</span>
-                  <button class="btn btn-primary" @click="signOut">
-                    Logout
-                  </button>
-                </template>
+                <li><router-link to="/guide">Guide</router-link></li>
+                <li><router-link to="/work">Work</router-link></li>
+                <li v-if="authenticaded.isAdmin">
+                  <router-link to="/admin">Admin panel</router-link>
+                </li>
+                <span class="py-3 px-4">Hei {{ user.username }}</span>
+                <button class="btn btn-primary" @click="signOut">Logout</button>
               </ul>
             </div>
           </div>
@@ -52,17 +51,18 @@
         </div>
         <div class="drawer-side">
           <label for="my-drawer-3" class="drawer-overlay"></label>
-          <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 font-raleway">
+          <ul
+            class="menu p-4 overflow-y-auto w-80 bg-base-100 font-raleway"
+            v-if="authenticaded"
+          >
             <!-- Sidebar content here -->
-            <template v-if="authenticaded">
-              <li><router-link to="/guide">Guide</router-link></li>
-              <li><router-link to="/work">Work</router-link></li>
-              <li v-if="authenticaded.isAdmin">
-                <router-link to="/admin">Admin panel</router-link>
-              </li>
-              <span class="py-3 px-4">Hei {{ user.username }}</span>
-              <button class="btn btn-primary" @click="signOut">Logout</button>
-            </template>
+            <li><router-link to="/guide">Guide</router-link></li>
+            <li><router-link to="/work">Work</router-link></li>
+            <li v-if="authenticaded.isAdmin">
+              <router-link to="/admin">Admin panel</router-link>
+            </li>
+            <span class="py-3 px-4">Hei {{ user.username }}</span>
+            <button class="btn btn-primary" @click="signOut">Logout</button>
           </ul>
         </div>
       </div>

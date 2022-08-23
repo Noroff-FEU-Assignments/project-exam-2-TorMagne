@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 mt-12 flex justify-center">
+  <div class="container mx-auto px-4 mt-12 flex flex-col items-center">
     <form action="" class="w-full max-w-md" @submit.prevent="createWorkTable">
       <Heading class="mb-5" title="Save work day" />
       <Success v-if="success" message="You successfully saved your work" />

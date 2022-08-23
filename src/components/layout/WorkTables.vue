@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 mt-12 flex justify-center">
-    <div class="overflow-x-0">
+    <div class="overflow-x-auto">
       <table class="table font-raleway">
         <!-- head -->
         <thead>
