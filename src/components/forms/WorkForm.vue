@@ -72,6 +72,7 @@
       </div>
       <button class="btn btn-primary mt-5">Save</button>
     </form>
+    <WorkTables ref="triggerGetUserWorkTable" />
   </div>
 </template>
 
@@ -79,6 +80,7 @@
 // components
 import Heading from "@/components/layout/Heading.vue";
 import Success from "@/components/layout/Success.vue";
+import WorkTables from "@/components/layout/WorkTables.vue";
 // utility
 import axios from "axios";
 import { mapGetters } from "vuex";
@@ -86,6 +88,7 @@ export default {
   components: {
     Heading,
     Success,
+    WorkTables,
   },
   data() {
     return {
@@ -136,6 +139,7 @@ export default {
       axios(config)
         .then((response) => {
           // this.getUserWorkTable();
+          this.$refs.triggerGetUserWorkTable.getUserWorkTable();
           this.resetForm();
           this.successFunc();
         })

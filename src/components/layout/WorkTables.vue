@@ -51,7 +51,6 @@ export default {
         );
         console.log(response);
         this.tables = response.data.work_tables.reverse();
-        // this.newWorkInfo.data.user = response.data.id;
       } catch (error) {
         console.log(error);
       }
