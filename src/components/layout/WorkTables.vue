@@ -4,6 +4,17 @@
       <Alert message="No work added yet" :alertClass="'alert-info'" />
     </div>
     <div class="overflow-x-auto" v-else>
+      <div class="form-control w-full max-w-x mb-3 font-raleway">
+        <label class="label">
+          <span class="label-text">Search date</span>
+        </label>
+        <input
+          type="date"
+          placeholder="Type here"
+          class="input input-bordered w-full max-w-xs border-primary"
+          v-model="searchDate"
+        />
+      </div>
       <table class="table font-raleway">
         <!-- head -->
         <thead>
@@ -14,7 +25,7 @@
             <th>Details</th>
           </tr>
         </thead>
-        <tbody class="" v-for="table in tables" :key="table.id">
+        <tbody class="" v-for="table in sortedDateTables" :key="table.id">
           <tr>
             <td class="whitespace-nowrap">{{ table.workDate }}</td>
             <td class="whitespace-nowrap">{{ table.workStartTime }}</td>
@@ -43,6 +54,7 @@ export default {
     return {
       tables: [],
       workAdded: false,
+      searchDate: "",
     };
   },
   mounted() {
@@ -74,6 +86,15 @@ export default {
     ...mapGetters({
       user: "auth/user",
     }),
+    sortedDateTables() {
+      return this.tables
+        .filter((table) => {
+          return table.workDate.match(this.searchDate);
+        })
+        .filter((table) => {
+          return table.workDetails.match(this.searchWorkDetails);
+        });
+    },
   },
 };
 </script>
