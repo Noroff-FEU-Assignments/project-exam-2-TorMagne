@@ -32,7 +32,7 @@
           <label for="password" class="label"
             ><span class="label-text-alt font-raleway">Password</span></label
           >
-          <ValidationProvider rules="required|length:10" v-slot="{ errors }">
+          <ValidationProvider rules="required|min:10" v-slot="{ errors }">
             <input
               id="password"
               type="password"
