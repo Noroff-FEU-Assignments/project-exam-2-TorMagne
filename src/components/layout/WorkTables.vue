@@ -42,10 +42,12 @@
 
         <tbody class="" v-for="table in paginationArray" :key="table.id">
           <tr>
-            <td class="whitespace-nowrap">{{ table.workDate }}</td>
-            <td class="whitespace-nowrap">{{ table.workStartTime }}</td>
-            <td class="whitespace-nowrap">{{ table.workEndTime }}</td>
-            <td class="whitespace-nowrap">
+            <td class="whitespace-nowrap bg-white">{{ table.workDate }}</td>
+            <td class="whitespace-nowrap bg-white">
+              {{ table.workStartTime }}
+            </td>
+            <td class="whitespace-nowrap bg-white">{{ table.workEndTime }}</td>
+            <td class="whitespace-nowrap bg-white">
               {{ table.workDetails }}
             </td>
           </tr>
