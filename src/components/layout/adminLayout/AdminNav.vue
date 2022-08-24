@@ -1,7 +1,18 @@
 <template>
-  <div class="flex">
+  <div class="flex flex-col md:flex-row">
     <div>
-      <ul class="menu bg-white w-56 rounded-lg mt-10 drop-shadow-md">
+      <ul
+        class="
+          menu
+          bg-white
+          md:w-56
+          rounded-lg
+          my-10
+          drop-shadow-md
+          flex flex-row
+          md:flex-col md:mt-5
+        "
+      >
         <li @click="showPanel(1)">
           <a :class="{ 'text-primary font-bold': show === 1 }">Users</a>
         </li>
@@ -13,7 +24,7 @@
         </li>
       </ul>
     </div>
-    <div class="container mx-auto px-4 mt-10">
+    <div class="">
       <User v-if="show === 1" />
       <CreateUser v-if="show === 2" />
       <UserWork v-if="show === 3" />
