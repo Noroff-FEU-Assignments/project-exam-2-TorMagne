@@ -17,7 +17,7 @@
 
     <div v-else>
       <div class="mb-3 md:flex">
-        <div class="font-raleway md:mr-10 w-full max-w-sm">
+        <div class="font-raleway md:mr-10">
           <label class="label">
             <span class="label-text font-raleway">Search date</span>
           </label>
