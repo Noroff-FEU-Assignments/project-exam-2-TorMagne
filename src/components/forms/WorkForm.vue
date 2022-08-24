@@ -1,81 +1,116 @@
 <template>
-  <div class="container mx-auto px-4 mt-12 flex flex-col items-center">
-    <form action="" class="w-full max-w-md" @submit.prevent="createWorkTable">
-      <Heading class="mb-5" title="Save work day" />
-      <Alert
-        v-if="success"
-        message="You successfully saved your work"
-        :alertClass="'alert-success'"
-      />
-      <!-- date -->
-      <div class="form-control w-full max-w-md">
-        <label class="label">
-          <span class="label-text font-raleway">Select work date</span>
-        </label>
-        <input
-          type="date"
-          placeholder="Select work date"
-          class="
-            input input-bordered
-            border-primary
-            w-full
-            max-w-md
-            font-raleway
-            text-lg
-          "
-          v-model="newWorkInfo.data.workDate"
+  <div>
+    <ValidationObserver
+      v-slot="{ handleSubmit, invalid }"
+      class="w-full container mx-auto px-4 mt-12 flex flex-col items-center"
+    >
+      <form
+        action=""
+        class="w-full max-w-md"
+        @submit.prevent="handleSubmit(createWorkTable)"
+      >
+        <Heading class="mb-5" title="Save work day" />
+        <Alert
+          v-if="success"
+          message="You successfully saved your work"
+          :alertClass="'alert-success'"
         />
-      </div>
-      <!-- start time -->
-      <div class="form-control w-full max-w-md">
-        <label class="label">
-          <span class="label-text font-raleway">Work start time</span>
-        </label>
-        <input
-          type="time"
-          placeholder="Select work date"
-          class="
-            input input-bordered
-            border-primary
-            w-full
-            max-w-md
-            font-raleway
-            text-lg
-          "
-          v-model="newWorkInfo.data.workStartTime"
-        />
-      </div>
-      <!-- end time -->
-      <div class="form-control w-full max-w-md">
-        <label class="label">
-          <span class="label-text font-raleway">Work end time</span>
-        </label>
-        <input
-          type="time"
-          placeholder="Select work date"
-          class="
-            input input-bordered
-            border-primary
-            w-full
-            max-w-md
-            font-raleway
-            text-lg
-          "
-          v-model="newWorkInfo.data.workEndTime"
-        />
-      </div>
-      <div class="form-control w-full max-w-md">
-        <label class="label">
-          <span class="label-text font-raleway">Work details</span>
-        </label>
-        <textarea
-          class="textarea textarea-bordered font-raleway border-primary"
-          placeholder="Work details"
-          v-model="newWorkInfo.data.workDetails"
-        ></textarea>
-      </div>
-      <button class="btn btn-primary mt-5">Save</button>
-    </form>
+        <!-- date -->
+        <div class="form-control w-full max-w-md">
+          <label class="label">
+            <span class="label-text font-raleway">Select work date</span>
+          </label>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <input
+              id="date"
+              type="date"
+              placeholder="Select work date"
+              class="
+                input input-bordered
+                border-primary
+                w-full
+                max-w-md
+                font-raleway
+                text-lg
+              "
+              v-model="newWorkInfo.data.workDate"
+            />
+            <span class="text-red-500">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </div>
+        <!-- start time -->
+        <div class="form-control w-full max-w-md">
+          <label class="label">
+            <span class="label-text font-raleway">Work start time</span>
+          </label>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <input
+              id="start time"
+              type="time"
+              placeholder="Select work date"
+              class="
+                input input-bordered
+                border-primary
+                w-full
+                max-w-md
+                font-raleway
+                text-lg
+              "
+              v-model="newWorkInfo.data.workStartTime"
+            />
+            <span class="text-red-500">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </div>
+        <!-- end time -->
+        <div class="form-control w-full max-w-md">
+          <label class="label">
+            <span class="label-text font-raleway">Work end time</span>
+          </label>
+          <ValidationProvider rules="required" v-slot="{ errors }">
+            <input
+              id="end time"
+              type="time"
+              placeholder="Select work date"
+              class="
+                input input-bordered
+                border-primary
+                w-full
+                max-w-md
+                font-raleway
+                text-lg
+              "
+              v-model="newWorkInfo.data.workEndTime"
+            />
+            <span class="text-red-500">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </div>
+        <div class="form-control w-full max-w-md">
+          <label class="label">
+            <span class="label-text font-raleway">Work details</span>
+          </label>
+          <ValidationProvider
+            rules="required"
+            v-slot="{ errors }"
+            class="w-full"
+          >
+            <textarea
+              id="details"
+              class="
+                textarea textarea-bordered
+                font-raleway
+                border-primary
+                w-full
+                h-30
+              "
+              placeholder="Work details"
+              v-model="newWorkInfo.data.workDetails"
+            ></textarea>
+            <span class="text-red-500">{{ errors[0] }}</span>
+          </ValidationProvider>
+        </div>
+        <button class="btn btn-primary mt-5" :disabled="invalid">Save</button>
+      </form>
+    </ValidationObserver>
     <WorkTables ref="triggerGetUserWorkTable" />
   </div>
 </template>
