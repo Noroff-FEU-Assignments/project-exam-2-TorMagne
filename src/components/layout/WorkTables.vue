@@ -4,16 +4,30 @@
       <Alert message="No work added yet" :alertClass="'alert-info'" />
     </div>
     <div class="overflow-x-auto" v-else>
-      <div class="form-control w-full max-w-x mb-3 font-raleway">
-        <label class="label">
-          <span class="label-text">Search date</span>
-        </label>
-        <input
-          type="date"
-          placeholder="Type here"
-          class="input input-bordered w-full max-w-xs border-primary"
-          v-model="searchDate"
-        />
+      <!-- search -->
+      <div class="md:flex md:items-center md:justify-center mb-3">
+        <div class="form-control w-full max-w-x font-raleway">
+          <label class="label">
+            <span class="label-text font-raleway">Search date</span>
+          </label>
+          <input
+            type="date"
+            placeholder="Type here"
+            class="input input-bordered w-full max-w-xs border-primary"
+            v-model="searchDate"
+          />
+        </div>
+        <!-- page select -->
+        <div>
+          <label class="label">
+            <span class="label-text font-raleway">Page size</span>
+          </label>
+          <select class="select select-primary w-[5rem]" v-model="pageCount">
+            <option v-for="(pageA, pageIndex) in pageArray" :key="pageIndex">
+              {{ pageA }}
+            </option>
+          </select>
+        </div>
       </div>
       <table class="table font-raleway">
         <!-- head -->
@@ -25,7 +39,8 @@
             <th>Details</th>
           </tr>
         </thead>
-        <tbody class="" v-for="table in sortedDateTables" :key="table.id">
+
+        <tbody class="" v-for="table in paginationArray" :key="table.id">
           <tr>
             <td class="whitespace-nowrap">{{ table.workDate }}</td>
             <td class="whitespace-nowrap">{{ table.workStartTime }}</td>
@@ -36,6 +51,17 @@
           </tr>
         </tbody>
       </table>
+      <!-- pagiantion
+         -->
+      <div class="btn-group justify-center mb-10">
+        <button class="btn text-primary" @click="movePaginationStep('back')">
+          «
+        </button>
+        <button class="btn">{{ page }}</button>
+        <button class="btn text-primary" @click="movePaginationStep('next')">
+          »
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -55,12 +81,26 @@ export default {
       tables: [],
       workAdded: false,
       searchDate: "",
+      page: 1,
+      pageCount: 5,
+      pageArray: [5, 10, 15, 20],
     };
   },
   mounted() {
     this.getUserWorkTable();
   },
   methods: {
+    movePaginationStep(stepDirection) {
+      if (stepDirection == "back") {
+        if (this.page != 1) {
+          this.page--;
+        }
+      } else {
+        if (this.page * this.pageCount < this.sortedDateTables.length) {
+          this.page++;
+        }
+      }
+    },
     async getUserWorkTable() {
       try {
         const response = await axios.get(
@@ -83,6 +123,11 @@ export default {
     },
   },
   computed: {
+    paginationArray() {
+      let sliceStart = (this.page - 1) * this.pageCount;
+      let sliceEnd = this.page * this.pageCount;
+      return this.sortedDateTables.slice(sliceStart, sliceEnd);
+    },
     ...mapGetters({
       user: "auth/user",
     }),
