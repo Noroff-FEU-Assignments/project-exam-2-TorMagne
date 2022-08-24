@@ -1,19 +1,30 @@
 <template>
-  <div class="container mx-auto px-4 mt-12 flex justify-center">
+  <div
+    class="
+      container
+      mx-auto
+      px-4
+      mt-12
+      flex
+      justify-center
+      flex-col
+      md:items-center
+    "
+  >
     <div v-if="workAdded">
       <Alert message="No work added yet" :alertClass="'alert-info'" />
     </div>
-    <div class="overflow-x-auto" v-else>
-      <!-- search -->
-      <div class="md:flex md:items-center md:justify-center mb-3">
-        <div class="form-control w-full max-w-x font-raleway">
+
+    <div v-else>
+      <div class="mb-3 md:flex">
+        <div class="font-raleway md:mr-10 w-full max-w-sm">
           <label class="label">
             <span class="label-text font-raleway">Search date</span>
           </label>
           <input
             type="date"
             placeholder="Type here"
-            class="input input-bordered w-full max-w-xs border-primary"
+            class="input input-bordered w-full border-primary"
             v-model="searchDate"
           />
         </div>
@@ -29,40 +40,45 @@
           </select>
         </div>
       </div>
-      <table class="table font-raleway">
-        <!-- head -->
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Start time</th>
-            <th>End Time</th>
-            <th>Details</th>
-          </tr>
-        </thead>
 
-        <tbody class="" v-for="table in paginationArray" :key="table.id">
-          <tr>
-            <td class="whitespace-nowrap bg-white">{{ table.workDate }}</td>
-            <td class="whitespace-nowrap bg-white">
-              {{ table.workStartTime }}
-            </td>
-            <td class="whitespace-nowrap bg-white">{{ table.workEndTime }}</td>
-            <td class="whitespace-nowrap bg-white">
-              {{ table.workDetails }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- pagiantion
+      <div class="overflow-x-auto">
+        <table class="table font-raleway">
+          <!-- head -->
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Start time</th>
+              <th>End Time</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+
+          <tbody class="" v-for="table in paginationArray" :key="table.id">
+            <tr>
+              <td class="whitespace-nowrap bg-white">{{ table.workDate }}</td>
+              <td class="whitespace-nowrap bg-white">
+                {{ table.workStartTime }}
+              </td>
+              <td class="whitespace-nowrap bg-white">
+                {{ table.workEndTime }}
+              </td>
+              <td class="whitespace-nowrap bg-white">
+                {{ table.workDetails }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- pagiantion
          -->
-      <div class="btn-group justify-center mb-10">
-        <button class="btn text-primary" @click="movePaginationStep('back')">
-          «
-        </button>
-        <button class="btn">{{ page }}</button>
-        <button class="btn text-primary" @click="movePaginationStep('next')">
-          »
-        </button>
+        <div class="btn-group justify-center my-3">
+          <button class="btn text-primary" @click="movePaginationStep('back')">
+            «
+          </button>
+          <button class="btn">{{ page }}</button>
+          <button class="btn text-primary" @click="movePaginationStep('next')">
+            »
+          </button>
+        </div>
       </div>
     </div>
   </div>
