@@ -1,7 +1,7 @@
 <template>
   <div>
-    <template v-if="loginError">
-      <Alert message="There was an login error" :alertClass="'alert-error'" />
+    <template v-if="isError">
+      <Alert message="Wrong username or password" :alertClass="'alert-error'" />
     </template>
     <template v-if="isLoading">
       <Loader />
@@ -80,7 +80,7 @@ export default {
         password: "",
       },
       isLoading: false,
-      loginError: false,
+      isError: false,
     };
   },
   methods: {
@@ -96,7 +96,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          this.loginError = true;
+          this.isError = true;
           this.isLoading = false;
         });
     },
