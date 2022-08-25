@@ -11,7 +11,7 @@
       >
         <Heading class="mb-5" title="Save work day" />
         <Alert
-          v-if="success"
+          v-if="isAlertOpen"
           message="You successfully saved your work"
           :alertClass="'alert-success'"
         />
@@ -140,16 +140,16 @@ export default {
           user: null,
         },
       },
-      success: false,
+      isAlertOpen: false,
     };
   },
   methods: {
     // show success message when form i posted
-    successFunc() {
-      this.success = true;
+    alertFunc() {
+      this.isAlertOpen = true;
       setTimeout(
         function () {
-          this.success = false;
+          this.isAlertOpen = false;
         }.bind(this),
         4000
       );
@@ -176,7 +176,7 @@ export default {
         .then((response) => {
           this.$refs.triggerGetUserWorkTable.getUserWorkTable();
           this.resetForm();
-          this.successFunc();
+          this.alertFunc();
         })
         .catch((error) => {
           console.log(error);

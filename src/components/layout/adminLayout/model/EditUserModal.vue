@@ -38,6 +38,12 @@
           >
             Close
           </button>
+          <Alert
+            message="You successfully edited this user"
+            v-if="isAlertOpen"
+            :alertClass="'alert-success'"
+            class="mt-5"
+          />
           <h3 class="text-lg font-bold font-sora mt-5">
             Edit user {{ userData.username }}
           </h3>
@@ -103,11 +109,17 @@
 </template>
 
 <script>
+// components
+import Alert from "@/components/layout/Alert.vue";
 // utillity
 import axios from "axios";
 export default {
+  components: {
+    Alert,
+  },
   data() {
     return {
+      isAlertOpen: false,
       userData: null,
       modelOpen: false,
       userRole: 1,
@@ -123,6 +135,15 @@ export default {
     };
   },
   methods: {
+    alertFunc() {
+      this.isAlertOpen = true;
+      setTimeout(
+        function () {
+          this.isAlertOpen = false;
+        }.bind(this),
+        4000
+      );
+    },
     async editUser() {
       let data = this.editedUserData;
       let editedData = {
@@ -146,6 +167,7 @@ export default {
 
       axios(config)
         .then((response) => {
+          this.alertFunc();
           console.log(JSON.stringify(response.data));
         })
         .catch((error) => {
