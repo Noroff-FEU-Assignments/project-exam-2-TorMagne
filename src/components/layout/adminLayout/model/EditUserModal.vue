@@ -45,7 +45,7 @@
             class="mt-5"
           />
           <h3 class="text-lg font-bold font-sora mt-5">
-            Edit user {{ userData.username }}
+            Edit user: {{ userData.username }}
           </h3>
           <div class="form-control w-full max-w-xs font-raleway">
             <label class="label">
@@ -55,7 +55,7 @@
               type="text"
               placeholder="Username"
               class="border-primary input input-bordered w-full max-w-xs mb-3"
-              v-model="editedUserData.username"
+              v-model="userData.username"
             />
             <label class="label">
               <span class="label-text">Change user email</span>
@@ -64,7 +64,7 @@
               type="email"
               placeholder="Email"
               class="border-primary input input-bordered w-full max-w-xs mb-3"
-              v-model="editedUserData.email"
+              v-model="userData.email"
             />
             <label class="label">
               <span class="label-text">Change user password</span>
@@ -124,12 +124,12 @@ export default {
       modelOpen: false,
       userRole: 1,
       editedUserData: {
-        username: null,
-        email: null,
+        username: "",
+        email: "",
         confirmed: true,
         isAdmin: false,
         role: {
-          id: 3,
+          id: null,
         },
       },
     };
@@ -147,8 +147,8 @@ export default {
     async editUser() {
       let data = this.editedUserData;
       let editedData = {
-        username: data.username,
-        email: data.email,
+        username: this.userData.username,
+        email: this.userData.email,
         confirmed: data.confirmed,
         isAdmin: data.isAdmin,
         role: {
