@@ -48,6 +48,7 @@
             Edit user: {{ userData.username }}
           </h3>
           <div class="form-control w-full max-w-xs font-raleway">
+            <!-- username input -->
             <label class="label">
               <span class="label-text">Change username</span>
             </label>
@@ -57,6 +58,7 @@
               class="border-primary input input-bordered w-full max-w-xs mb-3"
               v-model="userData.username"
             />
+            <!-- email input -->
             <label class="label">
               <span class="label-text">Change user email</span>
             </label>
@@ -146,7 +148,6 @@ export default {
           id: this.userRole,
         },
       };
-      console.log("editedData", editedData);
       let config = {
         method: "put",
         url: `users/${this.userData.id}?populate=role`,
@@ -159,7 +160,6 @@ export default {
       axios(config)
         .then((response) => {
           this.alertFunc();
-          console.log(JSON.stringify(response.data));
         })
         .catch((error) => {
           console.log(error);
@@ -167,7 +167,6 @@ export default {
     },
     openDialog(dataFromParent) {
       this.userData = dataFromParent;
-      console.log("trigggggered", dataFromParent);
       this.modelOpen = true;
     },
     closeDialog() {
