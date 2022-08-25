@@ -66,15 +66,6 @@
               class="border-primary input input-bordered w-full max-w-xs mb-3"
               v-model="userData.email"
             />
-            <label class="label">
-              <span class="label-text">Change user password</span>
-            </label>
-            <input
-              type="password"
-              placeholder="Password"
-              class="border-primary input input-bordered w-full max-w-xs mb-3"
-              v-model="editedUserData.password"
-            />
             <!-- toggle -->
             <div class="form-control">
               <label class="label cursor-pointer">
