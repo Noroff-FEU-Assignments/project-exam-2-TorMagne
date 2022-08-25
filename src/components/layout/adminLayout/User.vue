@@ -20,6 +20,7 @@
         <span>User name: {{ user.username }}</span>
         <span>User email: {{ user.email }}</span>
         <span>is admin: {{ user.isAdmin }}</span>
+        <span>User role: {{ user.role.name }}</span>
         <div class="card-actions">
           <button class="btn btn-info" @click="$refs.editUser.openDialog(user)">
             Edit user
