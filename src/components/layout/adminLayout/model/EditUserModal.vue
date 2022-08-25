@@ -28,19 +28,19 @@
         <form action="" @submit.prevent="editUser">
           <button
             class="
-              btn btn-warning
+              btn btn-warning btn-sm
               absolute
               right-2
               top-2
-              text-lg
               hover:bg-[#fbbe23ce]
             "
             @click="closeDialog"
           >
             Close
           </button>
-          <h3 class="text-lg font-bold font-sora">Edit user</h3>
-          <pre>{{ userData }}</pre>
+          <h3 class="text-lg font-bold font-sora mt-5">
+            Edit user {{ userData.username }}
+          </h3>
           <div class="form-control w-full max-w-xs font-raleway">
             <label class="label">
               <span class="label-text">Change username</span>
@@ -48,25 +48,25 @@
             <input
               type="text"
               placeholder="Username"
-              class="border-primary input input-bordered w-full max-w-xs"
+              class="border-primary input input-bordered w-full max-w-xs mb-3"
               v-model="editedUserData.username"
             />
-            <label class="Username">
+            <label class="label">
               <span class="label-text">Change user email</span>
             </label>
             <input
               type="email"
               placeholder="Email"
-              class="border-primary input input-bordered w-full max-w-xs"
+              class="border-primary input input-bordered w-full max-w-xs mb-3"
               v-model="editedUserData.email"
             />
-            <label class="Password">
+            <label class="label">
               <span class="label-text">Change user password</span>
             </label>
             <input
               type="password"
               placeholder="Password"
-              class="border-primary input input-bordered w-full max-w-xs"
+              class="border-primary input input-bordered w-full max-w-xs mb-3"
               v-model="editedUserData.password"
             />
             <!-- toggle -->
@@ -76,7 +76,7 @@
                 <input
                   type="checkbox"
                   checked="checked"
-                  class="checkbox checkbox-primary"
+                  class="checkbox checkbox-primary mb-3"
                   v-model="editedUserData.isAdmin"
                 />
               </label>
@@ -84,7 +84,7 @@
             <!-- dropdown -->
             <div class="flex justify-between">
               <label class="label">
-                <span class="label-text font-raleway">User role?</span>
+                <span class="label-text font-raleway mr-3">User role?</span>
               </label>
               <select
                 class="select select-primary w-[10rem] font-raleway font-normal"
@@ -95,9 +95,7 @@
               </select>
             </div>
           </div>
-          <pre>{{ editedUserData }}</pre>
-          <pre>{{ userRole }}</pre>
-          <button type="submit" class="btn btn-info">Save</button>
+          <button type="submit" class="btn btn-info w-full mt-5">Save</button>
         </form>
       </div>
     </div>
