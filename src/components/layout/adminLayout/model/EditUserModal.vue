@@ -30,12 +30,26 @@
           @click="closeDialog"
           >✕</label
         >
-        <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
+        <h3 class="text-lg font-bold font-sora">Edit user</h3>
         <pre>{{ userData }}</pre>
-        <p class="py-4">
-          You've been selected for a chance to get one year of subscription to
-          use Wikipedia for free!
-        </p>
+        <div class="form-control w-full max-w-xs font-raleway">
+          <label class="label">
+            <span class="label-text">Change username</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Username"
+            class="input input-bordered w-full max-w-xs"
+          />
+          <label class="Username">
+            <span class="label-text">Change user email</span>
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            class="input input-bordered w-full max-w-xs"
+          />
+        </div>
       </div>
     </div>
   </div>

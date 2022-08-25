@@ -16,7 +16,7 @@
       v-for="user in users"
       :key="user.id"
     >
-      <div class="card-body w-full">
+      <div class="card-body w-full font-raleway">
         <span>User name: {{ user.username }}</span>
         <span>User email: {{ user.email }}</span>
         <span>is admin: {{ user.isAdmin }}</span>
@@ -52,7 +52,7 @@ export default {
   methods: {
     async getAllUsers() {
       try {
-        const response = await axios.get("users", {
+        const response = await axios.get("users?populate=*", {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
           },
