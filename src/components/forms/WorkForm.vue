@@ -37,9 +37,9 @@
             />
             <span class="text-red-500">{{ errors[0] }}</span>
           </ValidationProvider>
-        </div>
-        <!-- start time -->
-        <div class="form-control w-full max-w-md">
+
+          <!-- start time -->
+
           <label class="label">
             <span class="label-text font-raleway">Work start time</span>
           </label>
@@ -60,9 +60,9 @@
             />
             <span class="text-red-500">{{ errors[0] }}</span>
           </ValidationProvider>
-        </div>
-        <!-- end time -->
-        <div class="form-control w-full max-w-md">
+
+          <!-- end time -->
+
           <label class="label">
             <span class="label-text font-raleway">Work end time</span>
           </label>
@@ -83,8 +83,7 @@
             />
             <span class="text-red-500">{{ errors[0] }}</span>
           </ValidationProvider>
-        </div>
-        <div class="form-control w-full max-w-md">
+
           <label class="label">
             <span class="label-text font-raleway">Work details</span>
           </label>
