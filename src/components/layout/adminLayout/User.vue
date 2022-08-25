@@ -20,20 +20,27 @@
         <span>User name: {{ user.username }}</span>
         <span>User email: {{ user.email }}</span>
         <span>is admin: {{ user.isAdmin }}</span>
-        <!-- <input type="text" v-model="userId" /> -->
-        <span>{{ user.id }}</span>
         <div class="card-actions">
-          <button class="btn btn-info">Edit user</button>
+          <button class="btn btn-info" @click="$refs.editUser.openDialog(user)">
+            Edit user
+          </button>
           <button class="btn btn-error">Delete user</button>
         </div>
       </div>
     </div>
+    <EditUserModal ref="editUser" />
   </div>
 </template>
 
 <script>
+// components
+import EditUserModal from "@/components/layout/adminLayout/model/EditUserModal.vue";
+// utillity
 import axios from "axios";
 export default {
+  components: {
+    EditUserModal,
+  },
   data() {
     return {
       users: null,
