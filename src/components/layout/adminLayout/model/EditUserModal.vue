@@ -44,6 +44,12 @@
             :alertClass="'alert-success'"
             class="mt-5"
           />
+          <Alert
+            message="Something went wrong when editing user"
+            v-if="isError"
+            :alertClass="'alert-error'"
+            class="mt-5"
+          />
           <h3 class="text-lg font-bold font-sora mt-5">
             Edit user: {{ userData.username }}
           </h3>
@@ -112,6 +118,7 @@ export default {
   },
   data() {
     return {
+      isError: false,
       isAlertOpen: false,
       userData: null,
       modelOpen: false,
@@ -162,6 +169,7 @@ export default {
           this.alertFunc();
         })
         .catch((error) => {
+          this.isError = true;
           console.log(error);
         });
     },
