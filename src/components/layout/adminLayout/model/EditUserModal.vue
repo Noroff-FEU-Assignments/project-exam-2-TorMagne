@@ -24,12 +24,21 @@
       "
       v-if="modelOpen"
     >
-      <div class="modal-box relative">
-        <label
-          class="btn btn-sm btn-circle absolute right-2 top-2"
+      <div class="bg-white rounded-lg relative p-8">
+        <button
+          class="
+            btn btn-warning
+            absolute
+            right-2
+            top-2
+            text-lg
+            border-primary
+            hover:bg-[#fbbe23ce]
+          "
           @click="closeDialog"
-          >✕</label
         >
+          Close
+        </button>
         <h3 class="text-lg font-bold font-sora">Edit user</h3>
         <pre>{{ userData }}</pre>
         <div class="form-control w-full max-w-xs font-raleway">
@@ -39,7 +48,7 @@
           <input
             type="text"
             placeholder="Username"
-            class="input input-bordered w-full max-w-xs"
+            class="border-primary input input-bordered w-full max-w-xs"
           />
           <label class="Username">
             <span class="label-text">Change user email</span>
@@ -47,7 +56,7 @@
           <input
             type="email"
             placeholder="Email"
-            class="input input-bordered w-full max-w-xs"
+            class="border-primary input input-bordered w-full max-w-xs"
           />
         </div>
       </div>
