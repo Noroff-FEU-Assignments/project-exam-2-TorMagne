@@ -32,7 +32,6 @@
             right-2
             top-2
             text-lg
-            border-primary
             hover:bg-[#fbbe23ce]
           "
           @click="closeDialog"
