@@ -57,6 +57,13 @@
             placeholder="Email"
             class="border-primary input input-bordered w-full max-w-xs"
           />
+          <!-- toggle -->
+          <div class="form-control">
+            <label class="label cursor-pointer">
+              <span class="label-text">Is admin or not</span>
+              <input type="checkbox" class="toggle toggle-primary" checked />
+            </label>
+          </div>
         </div>
       </div>
     </div>
