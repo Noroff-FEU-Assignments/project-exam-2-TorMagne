@@ -10,7 +10,6 @@
         class="input input-bordered w-full border-primary"
         v-model="searchUser"
       />
-      <pre>{{ searchUser }}</pre>
     </div>
     <div
       class="
