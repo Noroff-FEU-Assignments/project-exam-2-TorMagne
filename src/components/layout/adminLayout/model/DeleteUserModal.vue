@@ -43,6 +43,12 @@
           :alertClass="'alert-success'"
           class="mt-5"
         />
+        <Alert
+          message="Wops something went wrong"
+          v-if="isAlertOpen"
+          :alertClass="'alert-error'"
+          class="mt-5"
+        />
         <form class="w-full max-w-md" @submit.prevent="deleteUser()">
           <div class="form-control my-5">
             <label class="label cursor-pointer">
@@ -95,6 +101,7 @@ export default {
       isDelete: false,
       userData: null,
       isAlertOpen: false,
+      isError: false,
     };
   },
 
@@ -129,6 +136,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.isError = true;
         });
     },
     openDialog(dataFromParent) {
