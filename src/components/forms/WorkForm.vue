@@ -158,7 +158,7 @@ export default {
       this.newWorkInfo.data.workEndTime = "";
       this.newWorkInfo.data.workDetails = "";
     },
-    async createWorkTable() {
+    async createWorkTable(event) {
       this.newWorkInfo.data.user = this.user.id;
 
       let config = {
@@ -174,8 +174,8 @@ export default {
       axios(config)
         .then((response) => {
           this.$refs.triggerGetUserWorkTable.getUserWorkTable();
-          this.resetForm();
           this.alertFunc();
+          this.resetForm();
         })
         .catch((error) => {
           console.log(error);

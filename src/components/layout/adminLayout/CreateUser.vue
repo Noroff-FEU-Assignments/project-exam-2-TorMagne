@@ -133,6 +133,11 @@ export default {
     };
   },
   methods: {
+    resetForm() {
+      this.userData.username = "";
+      this.userData.email = "";
+      this.userData.password = "";
+    },
     alertFunc() {
       this.isAlertOpen = true;
       setTimeout(
@@ -156,6 +161,7 @@ export default {
         .then((response) => {
           console.log(JSON.stringify(response.data.message));
           this.alertFunc();
+          resetForm();
         })
         .catch((error) => {
           if (error.response.data.error.message == "Email already taken") {
