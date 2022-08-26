@@ -1,42 +1,62 @@
 <template>
-  <div
-    class="
-      md:container
-      md:mx-auto
-      md:px-4
-      md:mt-5
-      md:gap-5
-      md:flex
-      md:flex-row
-      md:flex-wrap
-      md:ml-5
-    "
-  >
+  <div>
+    <div class="font-raleway form-control w-full max-w-xs block ml-10 mt-3">
+      <label class="label">
+        <span class="label-text font-raleway">Search user</span>
+      </label>
+      <input
+        type="search"
+        placeholder="Search user"
+        class="input input-bordered w-full border-primary"
+        v-model="searchUser"
+      />
+      <pre>{{ searchUser }}</pre>
+    </div>
     <div
-      class="card bg-white shadow-md mb-5"
-      v-for="user in users"
-      :key="user.id"
+      class="
+        md:container
+        md:mx-auto
+        md:px-4
+        md:mt-5
+        md:gap-5
+        md:flex
+        md:flex-row
+        md:flex-wrap
+        md:ml-5
+      "
     >
-      <div class="card-body w-full font-raleway">
-        <span>User name: {{ user.username }}</span>
-        <span>User email: {{ user.email }}</span>
-        <span>is admin: {{ user.isAdmin }}</span>
-        <span>User role: {{ user.role.name }}</span>
-        <div class="card-actions">
-          <button class="btn btn-info" @click="$refs.editUser.openDialog(user)">
-            Edit user
-          </button>
-          <button
-            class="btn btn-error"
-            @click="$refs.deleteUser.openDialog(user)"
-          >
-            Delete user
-          </button>
+      <div
+        class="card bg-white shadow-md mb-5"
+        v-for="user in sortedUsers"
+        :key="user.id"
+      >
+        <div class="card-body w-full font-raleway">
+          <span>User name: {{ user.username }}</span>
+          <span>User email: {{ user.email }}</span>
+          <span>is admin: {{ user.isAdmin }}</span>
+          <span>User role: {{ user.role.name }}</span>
+          <div class="card-actions">
+            <button
+              class="btn btn-info"
+              @click="$refs.editUser.openDialog(user)"
+            >
+              Edit user
+            </button>
+            <button
+              class="btn btn-error"
+              @click="$refs.deleteUser.openDialog(user)"
+            >
+              Delete user
+            </button>
+          </div>
         </div>
       </div>
+      <EditUserModal ref="editUser" @childParentConnection="getAllUsers()" />
+      <DeleteUserModal
+        ref="deleteUser"
+        @childParentConnection="getAllUsers()"
+      />
     </div>
-    <EditUserModal ref="editUser" @childParentConnection="getAllUsers()" />
-    <DeleteUserModal ref="deleteUser" @childParentConnection="getAllUsers()" />
   </div>
 </template>
 
@@ -53,7 +73,8 @@ export default {
   },
   data() {
     return {
-      users: null,
+      users: [],
+      searchUser: "",
     };
   },
   mounted() {
@@ -68,11 +89,17 @@ export default {
           },
         });
         this.users = response.data;
-        this.users.reverse();
       } catch (error) {
         console.log(error);
         // fix alert error HERE!
       }
+    },
+  },
+  computed: {
+    sortedUsers() {
+      return this.users.filter((user) => {
+        return user.username.toLowerCase().match(this.searchUser);
+      });
     },
   },
 };

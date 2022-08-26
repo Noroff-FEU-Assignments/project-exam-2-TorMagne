@@ -150,13 +150,9 @@ export default {
       user: "auth/user",
     }),
     sortedDateTables() {
-      return this.tables
-        .filter((table) => {
-          return table.workDate.match(this.searchDate);
-        })
-        .filter((table) => {
-          return table.workDetails.match(this.searchWorkDetails);
-        });
+      return this.tables.filter((table) => {
+        return table.workDate.toLowerCase().match(this.searchDate);
+      });
     },
   },
 };
