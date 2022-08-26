@@ -18,6 +18,18 @@
     <ValidationObserver v-slot="{ handleSubmit, invalid }">
       <form action="" @submit.prevent="handleSubmit(createUser)">
         <Heading title="Create user" />
+        <Alert
+          message="You successfully created a user"
+          v-if="isAlertOpen"
+          :alertClass="'alert-success'"
+          class="mt-5"
+        />
+        <Alert
+          message="Something went wrong when creating a user"
+          v-if="isError"
+          :alertClass="'alert-error'"
+          class="mt-5"
+        />
         <!-- username -->
         <div class="form-control w-full max-w-md">
           <label for="text" class="label"
@@ -25,7 +37,7 @@
           >
           <ValidationProvider rules="required" v-slot="{ errors }">
             <input
-              id="text"
+              id="username"
               type="text"
               placeholder="Username"
               class="
@@ -36,8 +48,9 @@
                 mb-4
                 font-raleway
               "
+              v-model="userData.username"
             />
-            <span class="text-red-500">{{ errors[0] }}</span>
+            <span class="text-red-500 block">{{ errors[0] }}</span>
           </ValidationProvider>
 
           <!-- email -->
@@ -57,8 +70,9 @@
                 mb-4
                 font-raleway
               "
+              v-model="userData.email"
             />
-            <span class="text-red-500">{{ errors[0] }}</span>
+            <span class="text-red-500 block">{{ errors[0] }}</span>
           </ValidationProvider>
           <!-- password -->
           <label for="password" class="label"
@@ -77,8 +91,9 @@
                 mb-4
                 font-raleway
               "
+              v-model="userData.password"
             />
-            <span class="text-red-500">{{ errors[0] }}</span>
+            <span class="text-red-500 block">{{ errors[0] }}</span>
           </ValidationProvider>
           <button
             type="submit"
@@ -96,14 +111,18 @@
 <script>
 // components
 import Heading from "@/components/layout/Heading.vue";
+import Alert from "@/components/layout/Alert.vue";
 // utility
 import axios from "axios";
 export default {
   components: {
     Heading,
+    Alert,
   },
   data() {
     return {
+      isAlertOpen: false,
+      isError: false,
       userData: {
         username: null,
         email: null,
@@ -113,6 +132,15 @@ export default {
     };
   },
   methods: {
+    alertFunc() {
+      this.isAlertOpen = true;
+      setTimeout(
+        function () {
+          this.isAlertOpen = false;
+        }.bind(this),
+        4000
+      );
+    },
     createUser() {
       let config = {
         method: "post",
@@ -126,9 +154,11 @@ export default {
       axios(config)
         .then((response) => {
           console.log(JSON.stringify(response.data));
+          this.alertFunc();
         })
         .catch((error) => {
           console.log(error);
+          this.isError = true;
         });
     },
   },
