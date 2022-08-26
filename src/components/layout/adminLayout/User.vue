@@ -25,22 +25,30 @@
           <button class="btn btn-info" @click="$refs.editUser.openDialog(user)">
             Edit user
           </button>
-          <button class="btn btn-error">Delete user</button>
+          <button
+            class="btn btn-error"
+            @click="$refs.deleteUser.openDialog(user)"
+          >
+            Delete user
+          </button>
         </div>
       </div>
     </div>
     <EditUserModal ref="editUser" @childParentConnection="getAllUsers()" />
+    <DeleteUserModal ref="deleteUser" @childParentConnection="getAllUsers()" />
   </div>
 </template>
 
 <script>
 // components
+import DeleteUserModal from "@/components/layout/adminLayout/model/DeleteUserModal.vue";
 import EditUserModal from "@/components/layout/adminLayout/model/EditUserModal.vue";
 // utillity
 import axios from "axios";
 export default {
   components: {
     EditUserModal,
+    DeleteUserModal,
   },
   data() {
     return {

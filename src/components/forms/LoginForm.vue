@@ -49,7 +49,6 @@
             />
             <span class="text-red-500">{{ errors[0] }}</span>
           </ValidationProvider>
-
           <button
             type="submit"
             :disabled="invalid"
