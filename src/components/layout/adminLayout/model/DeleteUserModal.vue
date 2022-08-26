@@ -11,7 +11,7 @@
       transform
       -translate-x-1/2 -translate-y-1/2
     "
-    v-if="modelOpen"
+    v-if="isModalOpen"
   >
     <div
       class="
@@ -22,7 +22,7 @@
         transform
         -translate-x-1/2 -translate-y-1/2
       "
-      v-if="modelOpen"
+      v-if="isModalOpen"
     >
       <div class="bg-white rounded-lg relative p-8 md:w-96">
         <h2 class="font-sora">DELETE</h2>
