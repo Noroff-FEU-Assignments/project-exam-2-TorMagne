@@ -25,7 +25,7 @@
           class="mt-5"
         />
         <Alert
-          message="Something went wrong when creating a user"
+          :message="errorMessage"
           v-if="isError"
           :alertClass="'alert-error'"
           class="mt-5"
@@ -100,7 +100,7 @@
             :disabled="invalid"
             class="btn btn-primary font-sora block"
           >
-            Login
+            Create user
           </button>
         </div>
       </form>
@@ -123,6 +123,7 @@ export default {
     return {
       isAlertOpen: false,
       isError: false,
+      errorMessage: "",
       userData: {
         username: null,
         email: null,
@@ -153,11 +154,16 @@ export default {
 
       axios(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          console.log(JSON.stringify(response.data.message));
           this.alertFunc();
         })
         .catch((error) => {
-          console.log(error);
+          if (error.response.data.error.message == "Email already taken") {
+            this.errorMessage = error.response.data.error.message;
+          } else {
+            this.errorMessage = "Something went wrong when creating the user";
+          }
+          console.log(error.response);
           this.isError = true;
         });
     },
