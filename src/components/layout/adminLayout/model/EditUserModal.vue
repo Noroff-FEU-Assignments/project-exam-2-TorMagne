@@ -11,7 +11,7 @@
       transform
       -translate-x-1/2 -translate-y-1/2
     "
-    v-if="modelOpen"
+    v-if="isModalOpen"
   >
     <div
       class="
@@ -22,10 +22,10 @@
         transform
         -translate-x-1/2 -translate-y-1/2
       "
-      v-if="modelOpen"
+      v-if="isModalOpen"
     >
-      <div class="bg-white rounded-lg relative p-8">
-        <form action="" @submit.prevent="editUser">
+      <div class="bg-white rounded-lg relative p-8 md:w-96">
+        <form action="" @submit.prevent="editUser(getUpdatedUsers)">
           <button
             class="
               btn btn-warning btn-sm
@@ -100,7 +100,9 @@
               </select>
             </div>
           </div>
-          <button type="submit" class="btn btn-info w-full mt-5">Save</button>
+          <button type="submit" class="btn btn-success w-full mt-5">
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -121,7 +123,7 @@ export default {
       isError: false,
       isAlertOpen: false,
       userData: null,
-      modelOpen: false,
+      isModalOpen: false,
       userRole: 1,
       editedUserData: {
         username: "",
@@ -135,6 +137,9 @@ export default {
     };
   },
   methods: {
+    getUpdatedUsers() {
+      this.$emit("childParentConnection");
+    },
     alertFunc() {
       this.isAlertOpen = true;
       setTimeout(
@@ -174,10 +179,10 @@ export default {
     },
     openDialog(dataFromParent) {
       this.userData = dataFromParent;
-      this.modelOpen = true;
+      this.isModalOpen = true;
     },
     closeDialog() {
-      this.modelOpen = false;
+      this.isModalOpen = false;
       this.userData = null;
     },
   },

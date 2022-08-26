@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <EditUserModal ref="editUser" />
+    <EditUserModal ref="editUser" @childParentConnection="getAllUsers()" />
   </div>
 </template>
 
@@ -62,6 +62,7 @@ export default {
         this.users.reverse();
       } catch (error) {
         console.log(error);
+        // fix alert error HERE!
       }
     },
   },
