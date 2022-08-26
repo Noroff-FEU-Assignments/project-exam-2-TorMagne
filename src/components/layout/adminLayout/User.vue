@@ -9,10 +9,11 @@
       md:flex
       md:flex-row
       md:flex-wrap
+      md:ml-5
     "
   >
     <div
-      class="card bg-base-100 shadow-xl mb-5"
+      class="card bg-white shadow-md mb-5"
       v-for="user in users"
       :key="user.id"
     >
