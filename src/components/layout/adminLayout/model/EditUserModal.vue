@@ -85,8 +85,6 @@
           <button type="submit" class="btn btn-success w-full mt-5">
             Save
           </button>
-          <pre>{{ userRole }}</pre>
-          <pre>{{ editedUserData.isAdmin }}</pre>
         </form>
       </div>
     </div>
