@@ -121,6 +121,13 @@ export default {
     };
   },
   methods: {
+    checkIfIsAdminOrNot() {
+      if (this.userRole == 1) {
+        this.editedUserData.isAdmin = false;
+      } else if (this.userRole == 3) {
+        this.editedUserData.isAdmin = true;
+      }
+    },
     getUpdatedUsers() {
       this.$emit("childParentConnection");
     },
@@ -135,11 +142,7 @@ export default {
     },
     async editUser() {
       let data = this.editedUserData;
-      if (this.userRole == 1) {
-        this.editedUserData.isAdmin = false;
-      } else if (this.userRole == 3) {
-        this.editedUserData.isAdmin = true;
-      }
+      this.checkIfIsAdminOrNot();
       let editedData = {
         username: this.userData.username,
         email: this.userData.email,
