@@ -111,7 +111,6 @@ export default {
       } catch (error) {
         console.log(error);
         this.isError = true;
-        // fix alert error HERE!
       }
     },
   },
