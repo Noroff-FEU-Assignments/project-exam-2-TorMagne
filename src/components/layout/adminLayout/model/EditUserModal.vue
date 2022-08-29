@@ -68,18 +68,6 @@
               class="border-primary input input-bordered w-full max-w-xs mb-3"
               v-model="userData.email"
             />
-            <!-- toggle -->
-            <div class="form-control">
-              <label class="label cursor-pointer">
-                <span class="label-text">Is admin?</span>
-                <input
-                  type="checkbox"
-                  checked="checked"
-                  class="checkbox checkbox-primary mb-3"
-                  v-model="editedUserData.isAdmin"
-                />
-              </label>
-            </div>
             <!-- dropdown -->
             <div class="flex justify-between">
               <label class="label">
@@ -89,7 +77,7 @@
                 class="select select-primary w-[10rem] font-raleway font-normal"
                 v-model="userRole"
               >
-                <option value="1" selected="selected">Authenticated</option>
+                <option value="1" selected="selected">User</option>
                 <option value="3">Admin</option>
               </select>
             </div>
@@ -97,6 +85,8 @@
           <button type="submit" class="btn btn-success w-full mt-5">
             Save
           </button>
+          <pre>{{ userRole }}</pre>
+          <pre>{{ editedUserData.isAdmin }}</pre>
         </form>
       </div>
     </div>
@@ -145,6 +135,11 @@ export default {
     },
     async editUser() {
       let data = this.editedUserData;
+      if (this.userRole == 1) {
+        this.editedUserData.isAdmin = false;
+      } else if (this.userRole == 3) {
+        this.editedUserData.isAdmin = true;
+      }
       let editedData = {
         username: this.userData.username,
         email: this.userData.email,
