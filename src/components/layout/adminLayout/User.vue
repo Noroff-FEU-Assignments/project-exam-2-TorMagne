@@ -12,6 +12,12 @@
         md:mt-3
       "
     >
+      <Alert
+        message="Something went wrong when trying to get users"
+        v-if="isError"
+        :alertClass="'alert-error'"
+        class="mt-5"
+      />
       <label class="label">
         <span class="label-text font-raleway">Search user</span>
       </label>
@@ -72,6 +78,7 @@
 
 <script>
 // components
+import Alert from "@/components/layout/Alert.vue";
 import DeleteUserModal from "@/components/layout/adminLayout/model/DeleteUserModal.vue";
 import EditUserModal from "@/components/layout/adminLayout/model/EditUserModal.vue";
 // utillity
@@ -80,11 +87,13 @@ export default {
   components: {
     EditUserModal,
     DeleteUserModal,
+    Alert,
   },
   data() {
     return {
       users: [],
       searchUser: "",
+      isError: false,
     };
   },
   mounted() {
@@ -101,6 +110,7 @@ export default {
         this.users = response.data;
       } catch (error) {
         console.log(error);
+        this.isError = true;
         // fix alert error HERE!
       }
     },
