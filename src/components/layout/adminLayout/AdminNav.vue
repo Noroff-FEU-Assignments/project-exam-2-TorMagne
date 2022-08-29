@@ -10,7 +10,7 @@
           my-10
           drop-shadow-md
           flex flex-row
-          md:flex-col md:mt-5
+          md:flex-col md:mt-12
         "
       >
         <li @click="showPanel(1)">
