@@ -25,7 +25,7 @@
           class="mt-5"
         />
         <Alert
-          :message="errorMessage"
+          message="Something went wrong when creating the user"
           v-if="isError"
           :alertClass="'alert-error'"
           class="mt-5"
@@ -123,7 +123,6 @@ export default {
     return {
       isAlertOpen: false,
       isError: false,
-      errorMessage: "",
       userData: {
         username: null,
         email: null,
@@ -161,15 +160,10 @@ export default {
         .then((response) => {
           console.log(JSON.stringify(response.data.message));
           this.alertFunc();
-          resetForm();
+          this.resetForm();
         })
         .catch((error) => {
-          if (error.response.data.error.message == "Email already taken") {
-            this.errorMessage = error.response.data.error.message;
-          } else {
-            this.errorMessage = "Something went wrong when creating the user";
-          }
-          console.log(error.response);
+          console.log(error);
           this.isError = true;
         });
     },

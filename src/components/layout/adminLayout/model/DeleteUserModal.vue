@@ -45,7 +45,7 @@
         />
         <Alert
           message="Wops something went wrong"
-          v-if="isAlertOpen"
+          v-if="isError"
           :alertClass="'alert-error'"
           class="mt-5"
         />
@@ -130,7 +130,7 @@ export default {
 
       axios(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          console.log(response.data);
           this.alertFunc();
           this.getUpdatedUsers();
         })

@@ -1,6 +1,17 @@
 <template>
   <div>
-    <div class="font-raleway form-control w-full max-w-xs block ml-10 mt-3">
+    <div
+      class="
+        font-raleway
+        form-control
+        w-full
+        max-w-xs
+        block
+        md:ml-10
+        mb-3
+        md:mt-3
+      "
+    >
       <label class="label">
         <span class="label-text font-raleway">Search user</span>
       </label>
