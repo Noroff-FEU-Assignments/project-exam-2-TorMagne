@@ -11,6 +11,7 @@
           drop-shadow-md
           flex flex-row
           md:flex-col md:mt-12
+          font-raleway
         "
       >
         <li @click="showPanel(1)">

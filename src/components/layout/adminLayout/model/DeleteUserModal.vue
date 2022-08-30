@@ -44,7 +44,7 @@
           class="mt-5"
         />
         <form class="w-full max-w-md" @submit.prevent="deleteUser()">
-          <div class="form-control my-5">
+          <div class="form-control my-5 font-raleway">
             <label class="label cursor-pointer">
               <span class="label-text text-base"
                 >Are you sure you want to delete this user?

@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-4 flex justify-end mb-10 md:mb-0">
     <!-- The button to open modal -->
-    <label for="my-modal-3" class="btn modal-button btn-info"
+    <label for="my-modal-3" class="btn modal-button btn-info font-raleway"
       >Contact Admin</label
     >
 
