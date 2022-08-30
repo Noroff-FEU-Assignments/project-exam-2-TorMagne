@@ -4,7 +4,6 @@
       container
       max-auto
       px-4
-      mt-5
       flex
       justify-center
       bg-white
