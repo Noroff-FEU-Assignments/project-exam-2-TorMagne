@@ -25,18 +25,12 @@
       v-if="isModalOpen"
     >
       <div class="bg-white rounded-lg relative p-8 md:w-96">
-        <button
-          class="
-            btn btn-warning btn-sm
-            absolute
-            right-2
-            top-2
-            hover:bg-[#fbbe23ce]
-          "
+        <label
           @click="closeDialog"
+          for="my-modal-3"
+          class="btn btn-sm btn-circle absolute right-2 top-2"
+          >✕</label
         >
-          Close
-        </button>
         <Alert
           message="You successfully deleted this user"
           v-if="isAlertOpen"
