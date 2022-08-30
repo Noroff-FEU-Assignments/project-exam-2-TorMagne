@@ -34,7 +34,6 @@
             ></textarea>
           </div>
           <button class="btn btn-success mt-5" type="submit">Send</button>
-          <pre>{{ messageToAdmin.data.message }}</pre>
         </form>
       </div>
     </div>
