@@ -17,7 +17,7 @@
         <h3 class="text-lg font-bold font-sora mb-3">
           Send message to an Admin
         </h3>
-        <form action="">
+        <form action="" @submit.prevent="sendAdminMessage">
           <div class="form-control">
             <label class="label">
               <span class="label-text font-raleway">Message</span>
@@ -29,12 +29,59 @@
                 font-raleway
                 border-primary
               "
+              v-model="messageToAdmin.data.message"
               placeholder="Bio"
             ></textarea>
           </div>
           <button class="btn btn-success mt-5" type="submit">Send</button>
+          <pre>{{ messageToAdmin.data.message }}</pre>
         </form>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+// utility
+import axios from "axios";
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      messageToAdmin: {
+        data: {
+          message: "",
+          user: null,
+        },
+      },
+    };
+  },
+  methods: {
+    async sendAdminMessage() {
+      this.messageToAdmin.data.user = this.user.id;
+      let config = {
+        method: "post",
+        url: "messages",
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        data: this.messageToAdmin,
+      };
+
+      axios(config)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      user: "auth/user",
+    }),
+  },
+};
+</script>
