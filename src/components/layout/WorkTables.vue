@@ -56,8 +56,8 @@
             </tr>
           </thead>
 
-          <tbody class="" v-for="table in paginationArray" :key="table.id">
-            <tr>
+          <tbody v-for="table in paginationArray" :key="table.id">
+            <tr class="">
               <td class="whitespace-nowrap bg-white">{{ table.workDate }}</td>
               <td class="whitespace-nowrap bg-white">
                 {{ table.workStartTime }}
