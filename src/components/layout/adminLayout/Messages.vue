@@ -2,10 +2,6 @@
   <div
     class="
       font-raleway
-      form-control
-      w-full
-      max-w-xs
-      block
       mb-3
       md:container
       md:mx-auto
@@ -15,14 +11,16 @@
       md:flex-row
       md:flex-wrap
       md:ml-5
+      mt-10
+      md:mt-0
     "
   >
     <div
-      class="card w-96 bg-white shadow-xl"
+      class="card bg-white shadow-md mb-5 md:w-96 md:mb-0"
       v-for="message in newMessages"
       :key="message.id"
     >
-      <div class="card-body">
+      <div class="card-body w-full">
         <h2 class="card-title">
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>

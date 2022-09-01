@@ -12,6 +12,8 @@
       p-8
       shadow-md
       md:w-96 md:ml-10
+      mt-10
+      md:mt-0
     "
   >
     <ValidationObserver v-slot="{ handleSubmit, invalid }" ref="form">

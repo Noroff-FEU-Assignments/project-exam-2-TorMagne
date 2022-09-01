@@ -1,6 +1,17 @@
 <template>
   <div>
-    <div class="font-raleway form-control w-full max-w-xs block md:ml-10 mb-3">
+    <div
+      class="
+        font-raleway
+        form-control
+        w-full
+        max-w-xs
+        md:ml-10
+        mb-3
+        mt-8
+        md:mt-0
+      "
+    >
       <Alert
         message="Something went wrong when trying to get users"
         v-if="isError"
@@ -22,7 +33,6 @@
         md:container
         md:mx-auto
         md:px-4
-        md:mt-5
         md:gap-5
         md:flex
         md:flex-row
