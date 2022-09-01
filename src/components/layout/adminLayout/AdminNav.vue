@@ -22,6 +22,9 @@
         <li @click="showPanel(3)">
           <a :class="{ 'text-primary font-bold': show === 3 }">Work</a>
         </li>
+        <li @click="showPanel(4)">
+          <a :class="{ 'text-primary font-bold': show === 4 }">Messages</a>
+        </li>
       </ul>
     </div>
     <div class="">
