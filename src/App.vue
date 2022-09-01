@@ -59,7 +59,7 @@
                     >
                   </li>
                   <span class="py-3 px-4">Hei {{ user.username }}</span>
-                  <ContactAdminModal />
+                  <ContactAdminModal v-if="!authenticaded.isAdmin" />
                   <button class="btn btn-primary" @click="signOut">
                     Logout
                   </button>
