@@ -31,6 +31,7 @@
       <User v-if="show === 1" />
       <CreateUser v-if="show === 2" />
       <UserWork v-if="show === 3" />
+      <Messages v-if="show === 4" />
     </div>
   </div>
 </template>
@@ -39,11 +40,13 @@
 import User from "@/components/layout/adminLayout/User.vue";
 import CreateUser from "@/components/layout/adminLayout/CreateUser.vue";
 import UserWork from "@/components/layout/adminLayout/UserWork.vue";
+import Messages from "@/components/layout/adminLayout/Messages.vue";
 export default {
   components: {
     User,
     CreateUser,
     UserWork,
+    Messages,
   },
   data() {
     return {
