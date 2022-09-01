@@ -1,7 +1,6 @@
 <template>
   <div>
     <WorkForm />
-    <ContactAdminModal />
   </div>
 </template>
 
@@ -12,7 +11,6 @@ import WorkForm from "@/components/forms/WorkForm.vue";
 export default {
   components: {
     WorkForm,
-    ContactAdminModal,
   },
 };
 </script>

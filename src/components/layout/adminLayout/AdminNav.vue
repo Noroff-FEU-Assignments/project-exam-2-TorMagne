@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row md:mt-10">
+  <div class="flex flex-col md:flex-row mt-10">
     <div>
       <ul
         class="

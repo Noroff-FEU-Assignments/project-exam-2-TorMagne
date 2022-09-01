@@ -59,6 +59,7 @@
                     >
                   </li>
                   <span class="py-3 px-4">Hei {{ user.username }}</span>
+                  <ContactAdminModal />
                   <button class="btn btn-primary" @click="signOut">
                     Logout
                   </button>
@@ -103,6 +104,7 @@
               >
             </li>
             <span class="py-3 px-4">Hei {{ user.username }}</span>
+            <ContactAdminModal />
             <button class="btn btn-primary" @click="signOut">Logout</button>
           </ul>
         </div>
@@ -112,8 +114,14 @@
 </template>
 
 <script>
+// components
+import ContactAdminModal from "@/components/layout/ContactAdminModal.vue";
+// utillity
 import { mapGetters, mapActions } from "vuex";
 export default {
+  components: {
+    ContactAdminModal,
+  },
   data() {
     return {};
   },
