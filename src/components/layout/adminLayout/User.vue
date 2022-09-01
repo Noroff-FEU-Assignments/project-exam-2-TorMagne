@@ -67,8 +67,8 @@
 <script>
 // components
 import Alert from "@/components/layout/Alert.vue";
-import DeleteUserModal from "@/components/layout/adminLayout/modal/DeleteUserModal.vue";
-import EditUserModal from "@/components/layout/adminLayout/modal/EditUserModal.vue";
+import DeleteUserModal from "@/components/layout/adminLayout/modals/DeleteUserModal.vue";
+import EditUserModal from "@/components/layout/adminLayout/modals/EditUserModal.vue";
 // utillity
 import axios from "axios";
 export default {
