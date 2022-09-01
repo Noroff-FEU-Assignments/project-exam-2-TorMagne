@@ -21,7 +21,7 @@
       :key="message.id"
     >
       <div class="card-body w-full">
-        <h2 class="card-title">
+        <h2 class="card-title font-sora">
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>
         <p>Message: {{ message.attributes.message }}</p>
@@ -46,7 +46,7 @@ export default {
     async getAllNewMessages() {
       let config = {
         method: "get",
-        url: "http://localhost:1337/api/messages?populate=*",
+        url: "messages?populate=*",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type": "application/json",
