@@ -17,7 +17,7 @@
   >
     <div
       class="card bg-white shadow-md mb-5 md:w-96 md:mb-0"
-      v-for="message in newMessages"
+      v-for="message in filteredNewMessages"
       :key="message.id"
     >
       <div class="card-body w-full">
@@ -25,6 +25,11 @@
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>
         <p>Message: {{ message.attributes.message }}</p>
+        <div class="card-actions">
+          <button class="btn btn-info" @click="markMessageAsRead(message.id)">
+            Mark as read
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -36,13 +41,37 @@ import axios from "axios";
 export default {
   data() {
     return {
-      newMessages: {},
+      newMessages: [],
+      editedData: {
+        data: {
+          isRead: true,
+        },
+      },
     };
   },
   mounted() {
     this.getAllNewMessages();
   },
   methods: {
+    async markMessageAsRead(messageId) {
+      let config = {
+        method: "put",
+        url: `messages/${messageId}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        data: this.editedData,
+      };
+      axios(config)
+        .then((response) => {
+          console.log(response.data.data);
+          this.getAllNewMessages();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
     async getAllNewMessages() {
       let config = {
         method: "get",
@@ -52,15 +81,21 @@ export default {
           "Content-Type": "application/json",
         },
       };
-
       axios(config)
         .then((response) => {
-          // console.log(JSON.stringify(response.data));
+          console.log(response.data.data);
           this.newMessages = response.data.data;
         })
         .catch((error) => {
           console.log(error);
         });
+    },
+  },
+  computed: {
+    filteredNewMessages() {
+      return this.newMessages.filter((messages) => {
+        return !messages.attributes.isRead;
+      });
     },
   },
 };
