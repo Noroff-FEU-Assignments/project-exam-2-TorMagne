@@ -18,6 +18,15 @@
         :alertClass="'alert-error'"
         class="mt-5"
       />
+      <!-- search user drop down -->
+      <v-select
+        label="username"
+        :options="users"
+        :filterable="true"
+        v-model="searchUser"
+      ></v-select>
+      <!-- <pre>{{ users }}</pre> -->
+      <!-- search user -->
       <label class="label">
         <span class="label-text font-raleway">Search username</span>
       </label>
@@ -90,8 +99,12 @@ export default {
   data() {
     return {
       users: [],
-      searchUser: "",
+      searchUser: null,
       isError: false,
+      filterable: {
+        type: Boolean,
+        default: true,
+      },
     };
   },
   mounted() {
@@ -114,9 +127,15 @@ export default {
   },
   computed: {
     sortedUsers() {
-      return this.users.filter((user) => {
-        return user.username.toLowerCase().match(this.searchUser.toLowerCase());
-      });
+      if (this.searchUser && this.searchUser.username) {
+        return this.users.filter((user) => {
+          return user.username
+            .toLowerCase()
+            .match(this.searchUser.username.toLowerCase());
+        });
+      } else {
+        return this.users;
+      }
     },
   },
 };
