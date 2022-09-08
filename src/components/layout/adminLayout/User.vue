@@ -19,23 +19,15 @@
         class="mt-5"
       />
       <!-- search user drop down -->
-      <v-select
-        label="username"
-        :options="users"
-        :filterable="true"
-        v-model="searchUser"
-      ></v-select>
-      <!-- <pre>{{ users }}</pre> -->
-      <!-- search user -->
       <label class="label">
         <span class="label-text font-raleway">Search username</span>
       </label>
-      <input
-        type="search"
-        placeholder="Search username"
-        class="input input-bordered w-full border-primary"
+      <v-select
+        class="drop-down-search"
+        label="username"
+        :options="users"
         v-model="searchUser"
-      />
+      ></v-select>
     </div>
     <div
       class="
@@ -140,3 +132,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.drop-down-search {
+  --vs-border-color: #664cc3;
+}
+</style>
