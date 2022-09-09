@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <WorkForm />
-  </div>
+  <WorkForm />
 </template>
 
 <script>

@@ -8,8 +8,8 @@
     </template>
     <template v-else>
       <ValidationObserver v-slot="{ handleSubmit, invalid }">
-        <form action="" @submit.prevent="handleSubmit(onSubmit)">
-          <div class="form-control w-full max-w-md">
+        <form @submit.prevent="handleSubmit(onSubmit)">
+          <div class="form-control">
             <label for="email" class="label font-raleway"
               ><span class="label-text-alt">Email</span></label
             >
@@ -18,17 +18,10 @@
                 id="email"
                 type="email"
                 placeholder="Email"
-                class="
-                  input input-bordered
-                  w-full
-                  max-w-xs
-                  border-primary
-                  mb-4
-                  font-raleway
-                "
+                class="input input-bordered border-primary mb-4 font-raleway"
                 v-model="loginData.identifier"
               />
-              <span class="text-red-500">{{ errors[0] }}</span>
+              <span class="text-red-500 text-center">{{ errors[0] }}</span>
             </ValidationProvider>
             <label for="password" class="label"
               ><span class="label-text-alt font-raleway">Password</span></label
@@ -38,17 +31,10 @@
                 id="password"
                 type="password"
                 placeholder="Password"
-                class="
-                  input input-bordered
-                  w-full
-                  max-w-xs
-                  border-primary
-                  mb-4
-                  font-raleway
-                "
+                class="input input-bordered border-primary mb-4 font-raleway"
                 v-model="loginData.password"
               />
-              <span class="text-red-500">{{ errors[0] }}</span>
+              <span class="text-red-500 text-center">{{ errors[0] }}</span>
             </ValidationProvider>
             <button
               type="submit"

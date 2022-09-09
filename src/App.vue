@@ -58,9 +58,8 @@
                       >Admin panel</router-link
                     >
                   </li>
-                  <span class="py-3 px-4">Hei {{ user.username }}</span>
                   <ContactAdminModal v-if="!authenticaded.isAdmin" />
-                  <button class="btn btn-primary" @click="signOut">
+                  <button class="btn btn-primary md:ml-4" @click="signOut">
                     Logout
                   </button>
                 </ul>
@@ -103,8 +102,7 @@
                 >Admin panel</router-link
               >
             </li>
-            <span class="py-3 px-4">Hei {{ user.username }}</span>
-            <ContactAdminModal />
+            <ContactAdminModal v-if="!authenticaded.isAdmin" />
             <button class="btn btn-primary" @click="signOut">Logout</button>
           </ul>
         </div>
