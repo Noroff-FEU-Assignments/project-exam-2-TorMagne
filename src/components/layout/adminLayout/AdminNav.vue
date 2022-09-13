@@ -11,6 +11,7 @@
           flex flex-row
           md:flex-col
           font-raleway
+          p-4
         "
       >
         <li @click="showPanel(1)">
