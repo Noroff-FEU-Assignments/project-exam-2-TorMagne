@@ -58,7 +58,6 @@
                       >Admin panel</router-link
                     >
                   </li>
-                  <!-- <ContactAdminModal v-if="!authenticaded.isAdmin" /> -->
                   <button class="btn btn-primary md:ml-4" @click="signOut">
                     Logout
                   </button>
@@ -102,7 +101,6 @@
                 >Admin panel</router-link
               >
             </li>
-            <!-- <ContactAdminModal v-if="!authenticaded.isAdmin" /> -->
             <button class="btn btn-primary" @click="signOut">Logout</button>
           </ul>
         </div>
@@ -112,14 +110,9 @@
 </template>
 
 <script>
-// components
-import ContactAdminModal from "@/components/layout/ContactAdminModal.vue";
 // utillity
 import { mapGetters, mapActions } from "vuex";
 export default {
-  components: {
-    ContactAdminModal,
-  },
   data() {
     return {};
   },
