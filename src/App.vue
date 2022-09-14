@@ -58,7 +58,7 @@
                       >Admin panel</router-link
                     >
                   </li>
-                  <ContactAdminModal v-if="!authenticaded.isAdmin" />
+                  <!-- <ContactAdminModal v-if="!authenticaded.isAdmin" /> -->
                   <button class="btn btn-primary md:ml-4" @click="signOut">
                     Logout
                   </button>
@@ -102,7 +102,7 @@
                 >Admin panel</router-link
               >
             </li>
-            <ContactAdminModal v-if="!authenticaded.isAdmin" />
+            <!-- <ContactAdminModal v-if="!authenticaded.isAdmin" /> -->
             <button class="btn btn-primary" @click="signOut">Logout</button>
           </ul>
         </div>
