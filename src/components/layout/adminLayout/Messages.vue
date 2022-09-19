@@ -25,13 +25,13 @@
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>
         <div class="card-actions">
-          <button class="btn btn-info" @click="markMessageAsRead(message.id)">
-            Mark as read
-          </button>
           <!-- The button to open modal -->
           <label for="my-modal-3" class="btn modal-button btn-primary"
             >open message</label
           >
+          <button class="btn btn-info" @click="markMessageAsRead(message.id)">
+            Mark as read
+          </button>
 
           <!-- modal -->
           <input type="checkbox" id="my-modal-3" class="modal-toggle" />
