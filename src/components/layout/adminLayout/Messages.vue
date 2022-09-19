@@ -24,29 +24,14 @@
         <h2 class="card-title font-sora">
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>
+        <p>Message: {{ message.attributes.message }}</p>
         <div class="card-actions">
-          <!-- The button to open modal -->
-          <label for="my-modal-3" class="btn modal-button btn-primary"
-            >open message</label
+          <button
+            class="btn btn-warning"
+            @click="markMessageAsRead(message.id)"
           >
-          <button class="btn btn-info" @click="markMessageAsRead(message.id)">
             Mark as read
           </button>
-
-          <!-- modal -->
-          <input type="checkbox" id="my-modal-3" class="modal-toggle" />
-          <div class="modal">
-            <div class="modal-box relative">
-              <label
-                for="my-modal-3"
-                class="btn btn-sm btn-circle absolute right-2 top-2"
-                >✕</label
-              >
-              <p class="py-4">
-                {{ message.attributes.message }}
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
