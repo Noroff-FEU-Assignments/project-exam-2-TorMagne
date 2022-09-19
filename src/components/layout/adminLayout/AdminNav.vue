@@ -26,6 +26,11 @@
         <li @click="showPanel(4)">
           <a :class="{ 'text-primary font-bold': show === 4 }">New messages</a>
         </li>
+        <li @click="showPanel(5)">
+          <a :class="{ 'text-primary font-bold': show === 5 }"
+            >Archived messages</a
+          >
+        </li>
       </ul>
     </div>
     <div class="">
@@ -33,6 +38,7 @@
       <CreateUser v-if="show === 2" />
       <UserWork v-if="show === 3" />
       <Messages v-if="show === 4" />
+      <ArchivedMessages v-if="show === 5" />
     </div>
   </div>
 </template>
@@ -42,12 +48,14 @@ import User from "@/components/layout/adminLayout/User.vue";
 import CreateUser from "@/components/layout/adminLayout/CreateUser.vue";
 import UserWork from "@/components/layout/adminLayout/UserWork.vue";
 import Messages from "@/components/layout/adminLayout/Messages.vue";
+import ArchivedMessages from "@/components/layout/adminLayout/ArchiveMessages.vue";
 export default {
   components: {
     User,
     CreateUser,
     UserWork,
     Messages,
+    ArchivedMessages,
   },
   data() {
     return {
