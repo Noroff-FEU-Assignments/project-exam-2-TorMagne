@@ -60,7 +60,7 @@
           <thead class="text-white">
             <tr
               class="
-                bg-teal-400
+                bg-primary
                 flex flex-col flex-no
                 wrap
                 sm:table-row
@@ -133,7 +133,7 @@
           <thead class="text-white">
             <tr
               class="
-                bg-teal-400
+                bg-primary
                 flex flex-col flex-no
                 wrap
                 sm:table-row
