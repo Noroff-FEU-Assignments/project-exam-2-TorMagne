@@ -42,7 +42,7 @@ export default {
       newMessages: [],
       editedData: {
         data: {
-          isRead: true,
+          isArchived: true,
         },
       },
     };

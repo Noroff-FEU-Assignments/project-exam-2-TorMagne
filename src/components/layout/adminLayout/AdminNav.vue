@@ -31,6 +31,7 @@
           <a :class="{ 'text-primary font-bold': show === 5 }"
             >Archived messages</a
           >
+          <pre>{{ messageCounter }}</pre>
         </li>
       </ul>
     </div>
@@ -45,6 +46,9 @@
 </template>
 
 <script>
+// utillities
+import { mapGetters, mapActions } from "vuex";
+// components
 import User from "@/components/layout/adminLayout/User.vue";
 import CreateUser from "@/components/layout/adminLayout/CreateUser.vue";
 import UserWork from "@/components/layout/adminLayout/UserWork.vue";
@@ -62,12 +66,29 @@ export default {
     return {
       show: 1,
       activeCLass: "text-primary font-bold",
+      messageCounter: null,
     };
+  },
+  mounted() {
+    this.getUnreadMessages();
   },
   methods: {
     showPanel(number) {
       this.show = number;
     },
+    getUnreadMessages() {
+      this.newMessages.data.forEach((message) => {
+        if (message.attributes.isRead == false) {
+          this.messageCounter++;
+        }
+        // console.log(message.attributes.isRead);
+      });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      newMessages: "auth/newMessages",
+    }),
   },
 };
 </script>
