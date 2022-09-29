@@ -94,7 +94,7 @@ export default {
   computed: {
     filteredNewMessages() {
       return this.newMessages.filter((messages) => {
-        return messages.attributes.isRead;
+        return messages.attributes.isArchived;
       });
     },
   },

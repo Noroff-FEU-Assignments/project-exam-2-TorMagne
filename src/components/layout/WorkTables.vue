@@ -169,14 +169,7 @@
               >
                 {{ table.workEndTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border hover:bg-gray-100 p-3">
                 {{ table.workDetails }}
               </td>
             </tr>
@@ -302,8 +295,4 @@ td:not(:last-child) {
     display: none;
   }
 }
-
-/* @media (min-width: 640px) {
-  ...;
-} */
 </style>

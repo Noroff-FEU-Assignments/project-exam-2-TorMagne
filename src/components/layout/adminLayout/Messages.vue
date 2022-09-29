@@ -22,10 +22,11 @@
         <div class="card-actions">
           <button
             class="btn btn-warning"
-            @click="markMessageAsRead(message.id)"
+            @click="markMessageAsArchived(message.id)"
           >
             Archive message
           </button>
+          <button class="btn btn-info">Mark a read</button>
         </div>
       </div>
     </div>
@@ -50,7 +51,7 @@ export default {
     this.getAllNewMessages();
   },
   methods: {
-    async markMessageAsRead(messageId) {
+    async markMessageAsArchived(messageId) {
       let config = {
         method: "put",
         url: `messages/${messageId}`,
@@ -91,7 +92,7 @@ export default {
   computed: {
     filteredNewMessages() {
       return this.newMessages.filter((messages) => {
-        return !messages.attributes.isRead;
+        return !messages.attributes.isArchived;
       });
     },
   },

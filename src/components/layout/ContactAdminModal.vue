@@ -28,6 +28,15 @@
             <div class="">
               <label class="label">
                 <span class="label-text font-raleway">Message</span>
+                <p
+                  :class="
+                    messageToAdmin.data.message.length >= 151
+                      ? 'text-red-400'
+                      : 'text-gray-400'
+                  "
+                >
+                  Characters ( {{ messageToAdmin.data.message.length }} / 150 )
+                </p>
               </label>
               <ValidationProvider
                 rules="required|max:150"
@@ -45,7 +54,7 @@
                   v-model="messageToAdmin.data.message"
                   placeholder="Message"
                 ></textarea>
-                <span class="text-red-500">{{ errors[0] }}</span>
+                <span class="text-red-500 mt-4">{{ errors[0] }}</span>
               </ValidationProvider>
             </div>
             <button
