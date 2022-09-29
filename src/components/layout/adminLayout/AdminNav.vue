@@ -81,7 +81,6 @@ export default {
         if (message.attributes.isRead == false) {
           this.messageCounter++;
         }
-        // console.log(message.attributes.isRead);
       });
     },
   },
