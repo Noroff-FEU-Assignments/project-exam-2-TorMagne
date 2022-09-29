@@ -25,13 +25,28 @@
           <a :class="{ 'text-primary font-bold': show === 3 }">Work entries</a>
         </li>
         <li @click="showPanel(4)">
-          <a :class="{ 'text-primary font-bold': show === 4 }">New messages</a>
+          <a :class="{ 'text-primary font-bold': show === 4 }"
+            >New messages
+            <span
+              class="
+                bg-info
+                text-xl
+                rounded-full
+                w-8
+                pb-1
+                flex
+                justify-center
+                items-center
+                text-white
+              "
+              >{{ messageCounter }}</span
+            ></a
+          >
         </li>
         <li @click="showPanel(5)">
           <a :class="{ 'text-primary font-bold': show === 5 }"
             >Archived messages</a
           >
-          <pre>{{ messageCounter }}</pre>
         </li>
       </ul>
     </div>

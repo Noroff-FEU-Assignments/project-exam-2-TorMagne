@@ -10,7 +10,7 @@
     "
   >
     <div
-      class="card bg-white shadow-md mb-5 md:w-96 md:mb-0"
+      class="card bg-white shadow-md mb-5 md:w-96 md:mb-0 border-info border-2"
       v-for="message in filteredNewMessages"
       :key="message.id"
     >
