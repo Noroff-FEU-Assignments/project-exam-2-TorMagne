@@ -21,14 +21,16 @@
       :key="message.id"
     >
       <div class="card-body w-full">
-        <h2 class="card-title font-sora">
-          {{
+        <h2
+          class="card-title font-sora"
+          v-if="
             message.attributes.user.data &&
             message.attributes.user.data.attributes.username
-              ? message.attributes.user.data.attributes.username
-              : "Deleted user"
-          }}
+          "
+        >
+          {{ message.attributes.user.data.attributes.username }}
         </h2>
+        <h2 class="card-title font-sora text-red-400" v-else>Deleted user</h2>
         <p>Message: {{ message.attributes.message }}</p>
         <div class="card-actions">
           <button class="btn btn-warning" @click="deleteMessage(message.id)">
