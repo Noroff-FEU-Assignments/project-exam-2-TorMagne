@@ -40,7 +40,7 @@
           />
           <Alert
             message="Something went wrong when editing user"
-            v-if="isError"
+            v-else-if="isError"
             :alertClass="'alert-error'"
             class="mt-5"
           />
