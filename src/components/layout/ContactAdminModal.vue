@@ -94,6 +94,19 @@ export default {
         4000
       );
     },
+    resetForm() {
+      this.$refs.form.validate().then((success) => {
+        if (!success) {
+          return;
+        }
+      });
+      // Resetting Values
+      this.messageToAdmin.data.message = "";
+      // Wait until the models are updated in the UI
+      this.$nextTick(() => {
+        this.$refs.form.reset();
+      });
+    },
     async sendAdminMessage() {
       this.messageToAdmin.data.user = this.user.id;
       let config = {
@@ -110,6 +123,7 @@ export default {
         .then((response) => {
           console.log(response.data);
           this.alertFunc();
+          this.resetForm();
         })
         .catch((error) => {
           console.log(error);

@@ -87,7 +87,7 @@ export default {
       axios(config)
         .then((response) => {
           console.log(response.data.data);
-          this.newMessages = response.data.data;
+          this.newMessages = response.data.data.reverse();
         })
         .catch((error) => {
           console.log(error);
