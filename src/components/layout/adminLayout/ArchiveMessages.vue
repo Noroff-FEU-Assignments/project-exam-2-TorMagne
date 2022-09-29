@@ -22,7 +22,12 @@
     >
       <div class="card-body w-full">
         <h2 class="card-title font-sora">
-          Sender: {{ message.attributes.user.data.attributes.username }}
+          {{
+            message.attributes.user.data &&
+            message.attributes.user.data.attributes.username
+              ? message.attributes.user.data.attributes.username
+              : "Deleted user"
+          }}
         </h2>
         <p>Message: {{ message.attributes.message }}</p>
       </div>

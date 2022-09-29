@@ -30,7 +30,7 @@
             class="btn btn-warning"
             @click="markMessageAsRead(message.id)"
           >
-            Mark as read
+            Archive message
           </button>
         </div>
       </div>
