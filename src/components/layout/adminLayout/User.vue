@@ -1,17 +1,6 @@
 <template>
   <div>
-    <div
-      class="
-        font-raleway
-        form-control
-        w-full
-        max-w-xs
-        md:ml-10
-        mb-3
-        mt-8
-        md:mt-0
-      "
-    >
+    <div class="font-raleway form-control w-full max-w-xs mb-3 mt-8 md:mt-0">
       <Alert
         message="Something went wrong when trying to get users"
         v-if="isError"
@@ -19,11 +8,11 @@
         class="mt-5"
       />
       <!-- search user drop down -->
-      <label class="label pt-0">
+      <label class="label pt-0 pl-4">
         <span class="label-text font-raleway">Search username</span>
       </label>
       <v-select
-        class="drop-down-search mb-3"
+        class="drop-down-search mb-3 pl-4"
         label="username"
         :options="users"
         v-model="searchUser"
@@ -38,7 +27,6 @@
         md:flex
         md:flex-row
         md:flex-wrap
-        md:ml-5
       "
     >
       <div

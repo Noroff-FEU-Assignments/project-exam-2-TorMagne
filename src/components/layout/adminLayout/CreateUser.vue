@@ -2,8 +2,8 @@
   <div
     class="
       container
-      max-auto
-      px-4
+      mx-auto
+      ml-4
       flex
       justify-center
       bg-white
@@ -11,7 +11,7 @@
       relative
       p-8
       shadow-md
-      md:w-96 md:ml-10
+      md:w-96
       mt-10
       md:mt-0
     "

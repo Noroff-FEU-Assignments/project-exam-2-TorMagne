@@ -3,16 +3,10 @@
     class="
       font-raleway
       mb-3
-      md:container
-      md:mx-auto
-      md:px-4
-      md:gap-5
-      md:flex
-      md:flex-row
-      md:flex-wrap
-      md:ml-5
+      md:container md:mx-auto md:px-4 md:gap-5 md:flex md:flex-row md:flex-wrap
       mt-10
       md:mt-0
+      px-4
     "
   >
     <div

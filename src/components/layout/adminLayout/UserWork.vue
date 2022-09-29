@@ -1,6 +1,7 @@
 <template>
-  <h1>
-    Here will all users come. Admin can search/select user and then see all the
-    work that user have saved
-  </h1>
+  <div class="container mx-auto px-4">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor dicta cum
+    eaque distinctio atque totam error sunt asperiores temporibus
+    necessitatibus.
+  </div>
 </template>

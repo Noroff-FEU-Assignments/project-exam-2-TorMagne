@@ -12,6 +12,7 @@
           md:flex-col
           font-raleway
           p-4
+          md:mr-6
         "
       >
         <li @click="showPanel(1)">
@@ -21,7 +22,7 @@
           <a :class="{ 'text-primary font-bold': show === 2 }">Create Users</a>
         </li>
         <li @click="showPanel(3)">
-          <a :class="{ 'text-primary font-bold': show === 3 }">Work</a>
+          <a :class="{ 'text-primary font-bold': show === 3 }">Work entries</a>
         </li>
         <li @click="showPanel(4)">
           <a :class="{ 'text-primary font-bold': show === 4 }">New messages</a>
