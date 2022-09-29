@@ -30,6 +30,11 @@
           }}
         </h2>
         <p>Message: {{ message.attributes.message }}</p>
+        <div class="card-actions">
+          <button class="btn btn-warning" @click="deleteMessage(message.id)">
+            Delete message
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -66,6 +71,24 @@ export default {
         .then((response) => {
           console.log(response.data.data);
           this.newMessages = response.data.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    async deleteMessage(messageId) {
+      let config = {
+        method: "delete",
+        url: `messages/${messageId}`,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        data: this.editedData,
+      };
+      axios(config)
+        .then((response) => {
+          this.getAllNewMessages();
         })
         .catch((error) => {
           console.log(error);
