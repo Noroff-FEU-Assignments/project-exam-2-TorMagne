@@ -3,7 +3,7 @@
     class="
       container
       mx-auto
-      ml-4
+      md:ml-4
       flex
       justify-center
       bg-white

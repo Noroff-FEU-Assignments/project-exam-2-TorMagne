@@ -8,11 +8,11 @@
         class="mt-5"
       />
       <!-- search user drop down -->
-      <label class="label pt-0 pl-4">
+      <label class="label pt-0 md:pl-4">
         <span class="label-text font-raleway">Search username</span>
       </label>
       <v-select
-        class="drop-down-search mb-3 pl-4"
+        class="drop-down-search mb-3 md:pl-4"
         label="username"
         :options="users"
         v-model="searchUser"
