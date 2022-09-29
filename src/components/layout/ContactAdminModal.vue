@@ -30,7 +30,7 @@
                 <span class="label-text font-raleway">Message</span>
               </label>
               <ValidationProvider
-                rules="required"
+                rules="required|max:150"
                 v-slot="{ errors }"
                 class="form-control"
               >
