@@ -76,25 +76,16 @@
             :key="table.id"
           >
             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td class="border-grey-light border hover:bg-gray-100 p-3">
+              <td class="border-grey-light border p-3">
                 {{ table.attributes.user.data.attributes.username }}
               </td>
-              <td class="border-grey-light border hover:bg-gray-100 p-3">
+              <td class="border-grey-light border p-3">
                 {{ table.attributes.workDate }}
               </td>
-              <td
-                class="border-grey-light border hover:bg-gray-100 p-3 truncate"
-              >
+              <td class="border-grey-light border p-3 truncate">
                 {{ table.attributes.workStartTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border p-3">
                 {{ table.attributes.workEndTime }}
               </td>
               <td
