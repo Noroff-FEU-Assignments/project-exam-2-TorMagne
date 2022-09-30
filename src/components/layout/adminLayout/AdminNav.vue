@@ -29,6 +29,7 @@
           <a :class="{ 'text-primary font-bold': show === 4 }"
             >New messages
             <span
+              id="counter"
               class="
                 bg-info
                 font-sora
@@ -103,7 +104,10 @@ export default {
     },
     updateUnreadMesages() {
       this.messageCounter--;
-      console.log("hallo");
+      const counter = document.querySelector("#counter");
+      if (this.messageCounter == 0) {
+        counter.classList.toggle("hidden");
+      }
     },
   },
   computed: {
