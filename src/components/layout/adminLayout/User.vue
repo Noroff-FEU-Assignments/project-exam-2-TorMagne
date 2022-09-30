@@ -1,12 +1,12 @@
 <template>
   <div>
+    <Alert
+      message="Something went wrong when trying to get users"
+      v-if="isError"
+      :alertClass="'alert-error'"
+      class="mt-5"
+    />
     <div class="font-raleway form-control w-full max-w-xs mb-3 mt-8 md:mt-0">
-      <Alert
-        message="Something went wrong when trying to get users"
-        v-if="isError"
-        :alertClass="'alert-error'"
-        class="mt-5"
-      />
       <!-- search user drop down -->
       <label class="label pt-0 md:pl-4">
         <span class="label-text font-raleway">Search username</span>
@@ -81,10 +81,6 @@ export default {
       users: [],
       searchUser: null,
       isError: false,
-      filterable: {
-        type: Boolean,
-        default: true,
-      },
     };
   },
   mounted() {
