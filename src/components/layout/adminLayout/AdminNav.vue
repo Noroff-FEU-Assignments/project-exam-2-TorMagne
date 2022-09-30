@@ -10,6 +10,7 @@
           drop-shadow-md
           flex flex-row
           md:flex-col
+          flex-wrap
           font-raleway
           p-4
           md:mr-6
