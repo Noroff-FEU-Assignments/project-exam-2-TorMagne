@@ -82,32 +82,16 @@
             :key="table.id"
           >
             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td class="border-grey-light border hover:bg-gray-100 p-3">
+              <td class="border-grey-light border p-3">
                 {{ table.workDate }}
               </td>
-              <td
-                class="border-grey-light border hover:bg-gray-100 p-3 truncate"
-              >
+              <td class="border-grey-light border p-3 truncate">
                 {{ table.workStartTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border p-3">
                 {{ table.workEndTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border p-3">
                 {{ table.workDetails }}
               </td>
             </tr>
@@ -151,32 +135,16 @@
           </thead>
           <tbody class="flex-1 sm:flex-none">
             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-              <td class="border-grey-light border hover:bg-gray-100 p-3">
+              <td class="border-grey-light border p-3">
                 {{ table.workDate }}
               </td>
-              <td
-                class="border-grey-light border hover:bg-gray-100 p-3 truncate"
-              >
+              <td class="border-grey-light border p-3 truncate">
                 {{ table.workStartTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border p-3">
                 {{ table.workEndTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border p-3">
                 {{ table.workDetails }}
               </td>
             </tr>
@@ -249,9 +217,7 @@ export default {
           this.workAdded = false;
         }
         this.tables = response.data.work_tables.reverse();
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     },
   },
   computed: {
@@ -302,8 +268,4 @@ td:not(:last-child) {
     display: none;
   }
 }
-
-/* @media (min-width: 640px) {
-  ...;
-} */
 </style>

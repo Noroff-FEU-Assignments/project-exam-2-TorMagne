@@ -191,9 +191,7 @@ export default {
           this.alertFunc();
           this.resetForm();
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
   },
   computed: {

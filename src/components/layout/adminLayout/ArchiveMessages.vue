@@ -3,16 +3,10 @@
     class="
       font-raleway
       mb-3
-      md:container
-      md:mx-auto
-      md:px-4
-      md:gap-5
-      md:flex
-      md:flex-row
-      md:flex-wrap
-      md:ml-5
+      md:container md:mx-auto md:px-4 md:gap-5 md:flex md:flex-row md:flex-wrap
       mt-10
       md:mt-0
+      px-4
     "
   >
     <div
@@ -51,7 +45,7 @@ export default {
       newMessages: [],
       editedData: {
         data: {
-          isRead: true,
+          isArchived: true,
         },
       },
     };
@@ -71,12 +65,9 @@ export default {
       };
       axios(config)
         .then((response) => {
-          console.log(response.data.data);
           this.newMessages = response.data.data;
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
     async deleteMessage(messageId) {
       let config = {
@@ -92,15 +83,13 @@ export default {
         .then((response) => {
           this.getAllNewMessages();
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
   },
   computed: {
     filteredNewMessages() {
       return this.newMessages.filter((messages) => {
-        return messages.attributes.isRead;
+        return messages.attributes.isArchived;
       });
     },
   },

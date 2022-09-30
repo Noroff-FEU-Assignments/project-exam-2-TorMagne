@@ -124,12 +124,10 @@ export default {
 
       axios(config)
         .then((response) => {
-          console.log(response.data);
           this.alertFunc();
           this.getUpdatedUsers();
         })
         .catch((error) => {
-          console.log(error);
           this.isError = true;
         });
     },

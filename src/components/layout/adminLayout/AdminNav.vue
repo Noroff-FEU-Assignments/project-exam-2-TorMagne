@@ -10,8 +10,10 @@
           drop-shadow-md
           flex flex-row
           md:flex-col
+          flex-wrap
           font-raleway
           p-4
+          md:mr-6
         "
       >
         <li @click="showPanel(1)">
@@ -21,10 +23,26 @@
           <a :class="{ 'text-primary font-bold': show === 2 }">Create Users</a>
         </li>
         <li @click="showPanel(3)">
-          <a :class="{ 'text-primary font-bold': show === 3 }">Work</a>
+          <a :class="{ 'text-primary font-bold': show === 3 }">Work entries</a>
         </li>
         <li @click="showPanel(4)">
-          <a :class="{ 'text-primary font-bold': show === 4 }">New messages</a>
+          <a :class="{ 'text-primary font-bold': show === 4 }"
+            >New messages
+            <span
+              id="counter"
+              class="
+                bg-info
+                font-sora
+                rounded-full
+                px-2
+                flex
+                justify-center
+                items-center
+                text-white
+              "
+              >{{ messageCounter }}</span
+            ></a
+          >
         </li>
         <li @click="showPanel(5)">
           <a :class="{ 'text-primary font-bold': show === 5 }"
@@ -37,13 +55,19 @@
       <User v-if="show === 1" />
       <CreateUser v-if="show === 2" />
       <UserWork v-if="show === 3" />
-      <Messages v-if="show === 4" />
+      <Messages
+        v-if="show === 4"
+        @childParentConnection="updateUnreadMesages"
+      />
       <ArchivedMessages v-if="show === 5" />
     </div>
   </div>
 </template>
 
 <script>
+// utillities
+import { mapGetters } from "vuex";
+// components
 import User from "@/components/layout/adminLayout/User.vue";
 import CreateUser from "@/components/layout/adminLayout/CreateUser.vue";
 import UserWork from "@/components/layout/adminLayout/UserWork.vue";
@@ -61,12 +85,35 @@ export default {
     return {
       show: 1,
       activeCLass: "text-primary font-bold",
+      messageCounter: null,
     };
+  },
+  mounted() {
+    this.getUnreadMessages();
   },
   methods: {
     showPanel(number) {
       this.show = number;
     },
+    getUnreadMessages() {
+      this.newMessages.data.forEach((message) => {
+        if (message.attributes.isRead == false) {
+          this.messageCounter++;
+        }
+      });
+    },
+    updateUnreadMesages() {
+      this.messageCounter--;
+      const counter = document.querySelector("#counter");
+      if (this.messageCounter == 0) {
+        counter.classList.toggle("hidden");
+      }
+    },
+  },
+  computed: {
+    ...mapGetters({
+      newMessages: "auth/newMessages",
+    }),
   },
 };
 </script>

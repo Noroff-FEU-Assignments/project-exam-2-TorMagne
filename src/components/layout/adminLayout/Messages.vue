@@ -3,34 +3,30 @@
     class="
       font-raleway
       mb-3
-      md:container
-      md:mx-auto
-      md:px-4
-      md:gap-5
-      md:flex
-      md:flex-row
-      md:flex-wrap
-      md:ml-5
+      md:container md:mx-auto md:px-4 md:gap-5 md:flex md:flex-row md:flex-wrap
       mt-10
       md:mt-0
+      px-4
     "
   >
     <div
-      class="card bg-white shadow-md mb-5 md:w-96 md:mb-0"
+      class="card bg-white shadow-md mb-5 md:w-96 md:mb-0 border-info border-2"
       v-for="message in filteredNewMessages"
       :key="message.id"
     >
       <div class="card-body w-full">
+        <p>Sendt: {{ message.attributes.createdAt.split("T")[0] }}</p>
         <h2 class="card-title font-sora">
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>
-        <p>Message: {{ message.attributes.message }}</p>
+        <p class="mb-4">Message: {{ message.attributes.message }}</p>
         <div class="card-actions">
           <button
-            class="btn btn-warning"
-            @click="markMessageAsRead(message.id)"
+            id="read-button"
+            class="btn btn-info"
+            @click="markMessageAsArchived(message.id)"
           >
-            Archive message
+            Mark as read
           </button>
         </div>
       </div>
@@ -45,8 +41,9 @@ export default {
   data() {
     return {
       newMessages: [],
-      editedData: {
+      archivedData: {
         data: {
+          isArchived: true,
           isRead: true,
         },
       },
@@ -56,7 +53,7 @@ export default {
     this.getAllNewMessages();
   },
   methods: {
-    async markMessageAsRead(messageId) {
+    async markMessageAsArchived(messageId) {
       let config = {
         method: "put",
         url: `messages/${messageId}`,
@@ -64,16 +61,14 @@ export default {
           Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
-        data: this.editedData,
+        data: this.archivedData,
       };
       axios(config)
         .then((response) => {
-          console.log(response.data.data);
           this.getAllNewMessages();
+          this.$emit("childParentConnection");
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
     async getAllNewMessages() {
       let config = {
@@ -86,18 +81,15 @@ export default {
       };
       axios(config)
         .then((response) => {
-          console.log(response.data.data);
           this.newMessages = response.data.data.reverse();
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
   },
   computed: {
     filteredNewMessages() {
       return this.newMessages.filter((messages) => {
-        return !messages.attributes.isRead;
+        return !messages.attributes.isArchived;
       });
     },
   },
