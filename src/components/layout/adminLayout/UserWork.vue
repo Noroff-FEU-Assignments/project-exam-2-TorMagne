@@ -63,6 +63,7 @@
                 sm:mb-0
               "
             >
+              <th class="p-3 text-left">Edit</th>
               <th class="p-3 text-left">User</th>
               <th class="p-3 text-left">Date</th>
               <th class="p-3 text-left">Start time</th>
@@ -77,6 +78,14 @@
           >
             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
               <td class="border-grey-light border p-3">
+                <button
+                  class="btn btn-info btn-sm"
+                  @click="$refs.editUser.openDialog(table)"
+                >
+                  Edit
+                </button>
+              </td>
+              <td class="border-grey-light border p-3">
                 {{ table.attributes.user.data.attributes.username }}
               </td>
               <td class="border-grey-light border p-3">
@@ -88,14 +97,7 @@
               <td class="border-grey-light border p-3">
                 {{ table.attributes.workEndTime }}
               </td>
-              <td
-                class="
-                  border-grey-light border
-                  hover:bg-gray-100
-                  p-3
-                  cursor-pointer
-                "
-              >
+              <td class="border-grey-light border p-3">
                 {{ table.attributes.workDetails }}
               </td>
             </tr>
@@ -114,6 +116,10 @@
         </button>
       </div>
     </div>
+    <EditUserWorkTable
+      ref="editUser"
+      @childParentConnection="getAllWorkTables()"
+    />
   </div>
 </template>
 
@@ -122,9 +128,11 @@
 import axios from "axios";
 // components
 import Alert from "@/components/layout/Alert.vue";
+import EditUserWorkTable from "@/components/layout/adminLayout/modals/EditUserWork.vue";
 export default {
   components: {
     Alert,
+    EditUserWorkTable,
   },
   data() {
     return {
