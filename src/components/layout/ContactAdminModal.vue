@@ -130,13 +130,10 @@ export default {
 
       axios(config)
         .then((response) => {
-          console.log(response.data);
           this.alertFunc();
           this.resetForm();
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
   },
   computed: {

@@ -96,7 +96,6 @@ export default {
         });
         this.users = response.data;
       } catch (error) {
-        console.log(error);
         this.isError = true;
       }
     },

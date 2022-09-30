@@ -217,9 +217,7 @@ export default {
           this.workAdded = false;
         }
         this.tables = response.data.work_tables.reverse();
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     },
   },
   computed: {

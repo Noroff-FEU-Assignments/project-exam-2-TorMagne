@@ -178,7 +178,6 @@ export default {
           this.alertFunc();
         })
         .catch((error) => {
-          console.log(error);
           this.isError = true;
           this.alertFunc();
         });

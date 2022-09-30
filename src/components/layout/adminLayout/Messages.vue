@@ -68,9 +68,7 @@ export default {
           this.getAllNewMessages();
           this.$emit("childParentConnection");
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
     async getAllNewMessages() {
       let config = {
@@ -83,12 +81,9 @@ export default {
       };
       axios(config)
         .then((response) => {
-          console.log(response.data.data);
           this.newMessages = response.data.data.reverse();
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
   },
   computed: {

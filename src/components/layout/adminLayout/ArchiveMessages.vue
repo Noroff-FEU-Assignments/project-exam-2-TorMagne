@@ -65,12 +65,9 @@ export default {
       };
       axios(config)
         .then((response) => {
-          console.log(response.data.data);
           this.newMessages = response.data.data;
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
     async deleteMessage(messageId) {
       let config = {
@@ -86,9 +83,7 @@ export default {
         .then((response) => {
           this.getAllNewMessages();
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => {});
     },
   },
   computed: {

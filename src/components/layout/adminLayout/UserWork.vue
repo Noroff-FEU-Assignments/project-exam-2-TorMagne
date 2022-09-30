@@ -169,14 +169,9 @@ export default {
           "Content-Type": "application/json",
         },
       };
-
       axios(config)
         .then((response) => {
-          console.log(response.data.data.reverse());
           this.workTables = response.data.data.reverse();
-
-          // this.alertFunc();
-          // this.resetForm();
         })
         .catch((error) => {
           this.isError = true;
