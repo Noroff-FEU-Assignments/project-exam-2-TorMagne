@@ -31,10 +31,9 @@
             <span
               class="
                 bg-info
-                text-xl
+                font-sora
                 rounded-full
-                w-8
-                pb-1
+                px-2
                 flex
                 justify-center
                 items-center
@@ -55,7 +54,10 @@
       <User v-if="show === 1" />
       <CreateUser v-if="show === 2" />
       <UserWork v-if="show === 3" />
-      <Messages v-if="show === 4" />
+      <Messages
+        v-if="show === 4"
+        @childParentConnection="updateUnreadMesages"
+      />
       <ArchivedMessages v-if="show === 5" />
     </div>
   </div>
@@ -63,7 +65,7 @@
 
 <script>
 // utillities
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters } from "vuex";
 // components
 import User from "@/components/layout/adminLayout/User.vue";
 import CreateUser from "@/components/layout/adminLayout/CreateUser.vue";
@@ -98,6 +100,10 @@ export default {
           this.messageCounter++;
         }
       });
+    },
+    updateUnreadMesages() {
+      this.messageCounter--;
+      console.log("hallo");
     },
   },
   computed: {

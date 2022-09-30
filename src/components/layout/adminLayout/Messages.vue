@@ -15,18 +15,19 @@
       :key="message.id"
     >
       <div class="card-body w-full">
+        <p>Sendt: {{ message.attributes.createdAt.split("T")[0] }}</p>
         <h2 class="card-title font-sora">
           Sender: {{ message.attributes.user.data.attributes.username }}
         </h2>
-        <p>Message: {{ message.attributes.message }}</p>
+        <p class="mb-4">Message: {{ message.attributes.message }}</p>
         <div class="card-actions">
           <button
-            class="btn btn-warning"
+            id="read-button"
+            class="btn btn-info"
             @click="markMessageAsArchived(message.id)"
           >
-            Archive message
+            Mark as read
           </button>
-          <button class="btn btn-info">Mark a read</button>
         </div>
       </div>
     </div>
@@ -40,9 +41,10 @@ export default {
   data() {
     return {
       newMessages: [],
-      editedData: {
+      archivedData: {
         data: {
           isArchived: true,
+          isRead: true,
         },
       },
     };
@@ -59,12 +61,12 @@ export default {
           Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type": "application/json",
         },
-        data: this.editedData,
+        data: this.archivedData,
       };
       axios(config)
         .then((response) => {
-          console.log(response.data.data);
           this.getAllNewMessages();
+          this.$emit("childParentConnection");
         })
         .catch((error) => {
           console.log(error);
