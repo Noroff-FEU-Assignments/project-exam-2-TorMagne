@@ -190,6 +190,7 @@ export default {
     this.getUserWorkTable();
   },
   methods: {
+    // calculate the move step for the pagiantion
     movePaginationStep(stepDirection) {
       if (stepDirection == "back") {
         if (this.page != 1) {
@@ -201,6 +202,7 @@ export default {
         }
       }
     },
+    // get all work tables for the loged in user
     async getUserWorkTable() {
       try {
         const response = await axios.get(
@@ -229,6 +231,7 @@ export default {
     ...mapGetters({
       user: "auth/user",
     }),
+    // filter tables from search date
     sortedDateTables() {
       return this.tables.filter((table) => {
         return table.workDate.toLowerCase().match(this.searchDate);

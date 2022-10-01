@@ -129,6 +129,7 @@ export default {
     getUpdatedUsers() {
       this.$emit("childParentConnection");
     },
+    // handle alerts and alert time
     alertFunc() {
       if (this.isAlertOpen) {
         setTimeout(

@@ -133,6 +133,7 @@ export default {
     };
   },
   methods: {
+    // function to reset form after submit
     resetForm() {
       this.$refs.form.validate().then((success) => {
         if (!success) {
@@ -147,6 +148,7 @@ export default {
         this.$refs.form.reset();
       });
     },
+    // handle alerts and alert time
     alertFunc() {
       this.isAlertOpen = true;
       setTimeout(
@@ -156,6 +158,7 @@ export default {
         4000
       );
     },
+    // api call to create user
     createUser() {
       let config = {
         method: "post",

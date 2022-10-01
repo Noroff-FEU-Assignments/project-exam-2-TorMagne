@@ -182,6 +182,7 @@ export default {
           this.alertFunc();
         });
     },
+    // handle alerts and alert time
     alertFunc() {
       if (this.isAlertOpen) {
         setTimeout(

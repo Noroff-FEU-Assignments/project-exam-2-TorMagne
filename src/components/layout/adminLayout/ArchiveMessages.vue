@@ -54,6 +54,7 @@ export default {
     this.getAllNewMessages();
   },
   methods: {
+    // api call to get all messages
     async getAllNewMessages() {
       let config = {
         method: "get",
@@ -69,6 +70,7 @@ export default {
         })
         .catch((error) => {});
     },
+    // api call to delete messages
     async deleteMessage(messageId) {
       let config = {
         method: "delete",
@@ -87,6 +89,7 @@ export default {
     },
   },
   computed: {
+    // filter messages based on isArchived true or false
     filteredNewMessages() {
       return this.newMessages.filter((messages) => {
         return messages.attributes.isArchived;
