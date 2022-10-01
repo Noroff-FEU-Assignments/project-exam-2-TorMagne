@@ -11,6 +11,9 @@
       md:items-center
     "
   >
+    <template v-if="isLoading">
+      <Loader />
+    </template>
     <div v-if="workAdded">
       <Alert message="No work added yet" :alertClass="'alert-info'" />
     </div>
@@ -169,15 +172,18 @@
 <script>
 // components
 import Alert from "@/components/layout/Alert.vue";
+import Loader from "@/components/layout/Loader.vue";
 // utillity
 import { mapGetters } from "vuex";
 import axios from "axios";
 export default {
   components: {
     Alert,
+    Loader,
   },
   data() {
     return {
+      isLoading: false,
       tables: [],
       workAdded: false,
       searchDate: "",
@@ -203,6 +209,7 @@ export default {
     },
     async getUserWorkTable() {
       try {
+        this.isLoading = true;
         const response = await axios.get(
           "users/" + this.user.id + "?populate=work_tables",
           {
@@ -215,9 +222,12 @@ export default {
           this.workAdded = true;
         } else {
           this.workAdded = false;
+          this.isLoading = false;
         }
         this.tables = response.data.work_tables.reverse();
-      } catch (error) {}
+      } catch (error) {
+        this.isLoading = false;
+      }
     },
   },
   computed: {
