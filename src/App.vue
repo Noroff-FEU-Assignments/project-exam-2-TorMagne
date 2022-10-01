@@ -8,7 +8,11 @@
           <div class="navbar w-full bg-white px-0">
             <div class="container mx-auto px-4">
               <div class="flex-none lg:hidden">
-                <label for="my-drawer-3" class="btn btn-square btn-ghost">
+                <label
+                  for="my-drawer-3"
+                  class="btn btn-square btn-ghost"
+                  v-if="authenticaded"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
