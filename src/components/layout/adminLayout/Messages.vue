@@ -9,6 +9,11 @@
       px-4
     "
   >
+    <Alert
+      message="There is no new messages"
+      v-if="isAlertOpen"
+      :alertClass="'alert-info'"
+    />
     <div
       class="card bg-white shadow-md mb-5 md:w-96 md:mb-0 border-info border-2"
       v-for="message in filteredNewMessages"
@@ -37,9 +42,15 @@
 <script>
 // utillity
 import axios from "axios";
+// components
+import Alert from "@/components/layout/Alert.vue";
 export default {
+  components: {
+    Alert,
+  },
   data() {
     return {
+      isAlertOpen: false,
       newMessages: [],
       archivedData: {
         data: {
@@ -82,6 +93,11 @@ export default {
       axios(config)
         .then((response) => {
           this.newMessages = response.data.data.reverse();
+          if (response.data.data.length === 0) {
+            this.isAlertOpen = true;
+          } else {
+            this.isAlertOpen = false;
+          }
         })
         .catch((error) => {});
     },
