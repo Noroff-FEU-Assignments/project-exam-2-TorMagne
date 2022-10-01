@@ -10,7 +10,7 @@
     <div v-else>
       <div class="mb-3 md:flex">
         <!-- date search -->
-        <div class="font-raleway md:mr-10">
+        <div class="font-raleway md:mr-10 mt-8 md:mt-0">
           <label class="label">
             <span class="label-text font-raleway">Search date</span>
           </label>
