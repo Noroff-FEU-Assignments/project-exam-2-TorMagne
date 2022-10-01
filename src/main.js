@@ -19,6 +19,7 @@ Vue.component('v-select', vSelect);
 
 Vue.config.productionTip = false;
 
+// re authing the user on each page
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
   new Vue({
     router,
