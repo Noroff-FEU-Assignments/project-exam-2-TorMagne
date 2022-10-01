@@ -64,6 +64,7 @@ export default {
     this.getAllNewMessages();
   },
   methods: {
+    // api call to edit a message
     async markMessageAsArchived(messageId) {
       let config = {
         method: "put",
@@ -81,6 +82,7 @@ export default {
         })
         .catch((error) => {});
     },
+    // api call to get all messages
     async getAllNewMessages() {
       let config = {
         method: "get",

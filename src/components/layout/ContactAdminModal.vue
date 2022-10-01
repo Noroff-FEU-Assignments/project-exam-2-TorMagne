@@ -116,6 +116,7 @@ export default {
         this.$refs.form.reset();
       });
     },
+    // api call to create a message
     async sendAdminMessage() {
       this.messageToAdmin.data.user = this.user.id;
       let config = {

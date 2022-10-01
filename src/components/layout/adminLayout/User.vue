@@ -87,6 +87,7 @@ export default {
     this.getAllUsers();
   },
   methods: {
+    // api call to get all users
     async getAllUsers() {
       try {
         const response = await axios.get("users?populate=*", {
@@ -101,6 +102,7 @@ export default {
     },
   },
   computed: {
+    // filter user based on the users username
     sortedUsers() {
       if (this.searchUser && this.searchUser.username) {
         return this.users.filter((user) => {
