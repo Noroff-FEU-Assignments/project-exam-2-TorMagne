@@ -24,7 +24,7 @@
       "
       v-if="isModalOpen"
     >
-      <div class="bg-white rounded-lg relative p-8 md:w-96">
+      <div class="bg-white rounded-lg relative p-8 md:w-96 w-[90vw]">
         <form action="" @submit.prevent="editUser(getUpdatedUsers)">
           <label
             @click="closeDialog"
