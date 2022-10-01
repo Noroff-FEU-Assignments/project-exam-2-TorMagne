@@ -38,7 +38,7 @@
       </div>
 
       <!-- desktop table -->
-      <div class="desktop-table">
+      <div class="desktop-table hidden md:block font-sora">
         <table
           class="
             w-full
@@ -104,6 +104,44 @@
           </tbody>
         </table>
       </div>
+
+      <div
+        v-for="table in paginationArray"
+        :key="table.id"
+        class="card bg-white shadow-md mb-5 md:w-96 md:mb-0 md:hidden font-sora"
+      >
+        <div class="card-body w-full">
+          <p>
+            <span class="font-bold">User:</span>
+            {{ table.attributes.user.data.attributes.username }}
+          </p>
+          <p>
+            <span class="font-bold">Date:</span>
+            {{ table.attributes.workDate }}
+          </p>
+          <p>
+            <span class="font-bold">Start time:</span>
+            {{ table.attributes.workStartTime }}
+          </p>
+          <p>
+            <span class="font-bold">End time:</span>
+            {{ table.attributes.workEndTime }}
+          </p>
+          <p>
+            <span class="font-bold">Work details:</span>
+            {{ table.attributes.workDetails }}
+          </p>
+          <div class="card-actions">
+            <button
+              class="btn btn-info"
+              @click="$refs.editUser.openDialog(table)"
+            >
+              Edit
+            </button>
+          </div>
+        </div>
+      </div>
+
       <!-- pagiantion
          -->
       <div class="btn-group justify-center my-3 font-raleway">
@@ -211,16 +249,5 @@ body {
 
 td:not(:last-child) {
   border-bottom: 0;
-}
-
-@media (max-width: 768px) {
-  .desktop-table {
-    display: none;
-  }
-}
-@media (min-width: 768px) {
-  .mobile-table {
-    display: none;
-  }
 }
 </style>
