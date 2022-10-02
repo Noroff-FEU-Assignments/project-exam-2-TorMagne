@@ -29,3 +29,8 @@ run project
 build project
 
     npm run dev
+
+### Your own setup
+If you want to run the project with your own server url. Please do so in the .env.example file.
+
+    VUE_APP_API_URL = your api
