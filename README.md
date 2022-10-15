@@ -1,5 +1,7 @@
 # SUNGA
 
+![sunga](https://user-images.githubusercontent.com/61709493/195989258-a32223a9-0c0e-49fc-9be8-ef1ce3d62fa0.jpg)
+
 A app where you can save your work hours and more
 
 ## Getting Started
